@@ -1,0 +1,34 @@
+{
+    "title": { "first": "How We", "second": "Collaborate", "third": "With You" },
+    "subtitle": "Discover Our Company",
+    "items": [
+        {
+            "name": "Thinking Big",
+            "icon": "/img/icons/sm/1.svg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "name": "Starting Small",
+            "icon": "/img/icons/sm/2.svg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "name": "Creating Fast",
+            "icon": "/img/icons/sm/3.svg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "name": "Innovating Scale",
+            "icon": "/img/icons/sm/4.svg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+    ],
+    "button1": {
+        "label": "Learn More",
+        "link": "/about"
+    },
+    "button2": {
+        "label": "How We Work",
+        "link": "/careers"
+    }
+}

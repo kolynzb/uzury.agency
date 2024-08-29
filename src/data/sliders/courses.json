@@ -1,0 +1,58 @@
+{
+    "title": "Latest Courses",
+    "subtitle": "Unlimited Training",
+    "items": [
+        {
+            "title": "Cibersecurity Premium",
+            "image": "img/blog/1.jpg",
+            "tags": [ "Security", "Team" ],
+            "rating": "4.5",
+            "author": "John Stone",
+            "price": {
+                "format": "free",
+                "value": "Free",
+                "old": ""
+            }
+        },
+        {
+            "title": "Cibersecurity Premium",
+            "image": "img/projects/2.jpg",
+            "tags": [ "Security", "Team" ],
+            "rating": "4.5",
+            "author": "John Stone",
+            "price": {
+                "format": "default",
+                "value": "$22.99 us",
+                "old": ""
+            }
+        },
+        {
+            "title": "Cibersecurity Premium",
+            "image": "img/blog/3.jpg",
+            "tags": [ "Security", "Team" ],
+            "rating": "4.5",
+            "author": "John Stone",
+            "price": {
+                "format": "sale",
+                "value": "$50.99 us",
+                "old": "$15.99 us"
+            }
+        },
+        {
+            "title": "Cibersecurity Premium",
+            "image": "img/blog/1.jpg",
+            "tags": [ "Security", "Team" ],
+            "rating": "4.5",
+            "author": "John Stone",
+            "price": {
+                "format": "default",
+                "value": "$19.99 us",
+                "old": ""
+            }
+        }
+    ],
+    "button": {
+        "label": "See More Courses",
+        "link": "/blog"
+    }
+}

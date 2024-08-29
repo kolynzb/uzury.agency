@@ -1,0 +1,9 @@
+{
+    "title": "Latest Thinking",
+    "subtitle": "Our Latest News",
+    "numOfItems": "6",
+    "button": {
+        "label": "View More Insights",
+        "link": "/blog"
+    }
+}

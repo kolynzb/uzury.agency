@@ -1,0 +1,75 @@
+{
+    "title": "Virtual Events",
+    "subtitle": "We Share Knowledge",
+    "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "items": [
+        {
+            "title": "Development for the next era of the Internet economy",
+            "image": "img/projects/1.jpg",
+            "speakers": [
+                {
+                    "image": "img/faces/1.jpg",
+                    "alt": "speaker"
+                },
+                {
+                    "image": "img/faces/2.jpg",
+                    "alt": "speaker"
+                },
+                {
+                    "image": "img/faces/3.jpg",
+                    "alt": "speaker"
+                }
+            ],
+            "category": "Data Security",
+            "link": "/event"
+        },
+        {
+            "title": "Development for the next era of the Internet economy",
+            "image": "img/projects/2.jpg",
+            "speakers": [
+                {
+                    "image": "img/faces/1.jpg",
+                    "alt": "speaker"
+                },
+                {
+                    "image": "img/faces/3.jpg",
+                    "alt": "speaker"
+                }
+            ],
+            "category": "Data Security",
+            "link": "/event"
+        },
+        {
+            "title": "Development for the next era of the Internet economy",
+            "image": "img/projects/3.jpg",
+            "speakers": [
+                {
+                    "image": "img/faces/1.jpg",
+                    "alt": "speaker"
+                },
+                {
+                    "image": "img/faces/2.jpg",
+                    "alt": "speaker"
+                },
+                {
+                    "image": "img/faces/3.jpg",
+                    "alt": "speaker"
+                }
+            ],
+            "category": "Data Security",
+            "link": "/event"
+        },
+        {
+            "title": "Development for the next era of the Internet economy",
+            "image": "img/projects/4.jpg",
+            "speakers": [
+                {
+                    "image": "img/faces/1.jpg",
+                    "alt": "speaker"
+                }
+            ],
+            "category": "Data Security",
+            "link": "/event"
+        }
+    ]
+}

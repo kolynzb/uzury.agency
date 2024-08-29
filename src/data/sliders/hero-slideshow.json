@@ -1,0 +1,34 @@
+{
+    "title": { "first": "We Provide Services <br />and Solutions", "second": "To Enterprise" },
+    "subtitle": { "first": "The Next", "second": "Gen" },
+    "button": { "label": "Let’s Talk", "link": "/contact" },
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "slides": [
+        {
+            "image": "img/photo/1.jpg"
+        },
+        {
+            "image": "img/photo/2.jpg"
+        },
+        {
+            "image": "img/photo/3.jpg"
+        }
+    ],
+    "items": [
+        {
+            "label": "Dedicated Team",
+            "title": "Experts",
+            "text": "And here's some amazing content. It's very engaging. Right?"
+        },
+        {
+            "label": "Developers",
+            "title": "Experts",
+            "text": "And here's some amazing content. It's very engaging. Right?"
+        },
+        {
+            "label": "Designers",
+            "title": "Experts",
+            "text": "And here's some amazing content. It's very engaging. Right?"
+        }
+    ]
+}

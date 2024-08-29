@@ -1,0 +1,42 @@
+{
+    "image": "img/photo/8.jpg",
+    "title": "Powerful and Easy",
+    "subtitle": "Designed for Developers",
+    "text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose. There are many variations of passages majority.",
+    "list": [
+        {
+            "value": "Accelerate innovation."
+        },
+        {
+            "value": "With world-class tech teams."
+        },
+        {
+            "value": "Our all service offerings to enhance."
+        },
+        {
+            "value": "Simply drag, drop and customize."
+        }
+    ],
+    "rating": {
+        "label": "From +5000 reviews",
+        "value": "4.5"
+    },
+    "speakers": [
+        {
+            "image": "img/faces/1.jpg",
+            "alt": "speaker"
+        },
+        {
+            "image": "img/faces/2.jpg",
+            "alt": "speaker"
+        },
+        {
+            "image": "img/faces/3.jpg",
+            "alt": "speaker"
+        },
+        {
+            "image": "img/faces/4.jpg",
+            "alt": "speaker"
+        }
+    ]
+}

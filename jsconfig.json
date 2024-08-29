@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"],
+      "@posts": ["./src/data/posts"],
+      "@posts/*": ["./src/data/posts/*"]
+    }
+  }
+}

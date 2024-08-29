@@ -1,0 +1,115 @@
+{
+    "items": [
+        {
+            "image": "img/photo/4.jpg",
+            "subtitle": { "first": "Our", "second": "Inspiration" },
+            "title": [
+                {
+                    "string": "The",
+                    "accent": "0"
+                },
+                {
+                    "string": "Freedom",
+                    "accent": "1"                    
+                },
+                {
+                    "string": "to focus on <br />improving",
+                    "accent": "0"
+                },
+                {
+                    "string": "Your",
+                    "accent": "1"
+                },
+                {
+                    "string": "business or idea",
+                    "accent": "0"
+                }
+            ],
+            "text": "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse <br /> molestie consequat, vel illum dolore eu feugiat nulla.",
+            "button1": {
+                "enable": "1",
+                "label": "Read More",
+                "link": "/about"
+            },
+            "button2": {
+                "enable": "1",
+                "label": "Watch Video",
+                "link": ""
+            }
+        },
+        {
+            "image": "img/photo/5.jpg",
+            "subtitle": { "first": "Our", "second": "Inspiration" },
+            "title": [
+                {
+                    "string": "The",
+                    "accent": "0"
+                },
+                {
+                    "string": "Freedom",
+                    "accent": "1"                    
+                },
+                {
+                    "string": "to focus on <br />improving",
+                    "accent": "0"
+                },
+                {
+                    "string": "Your",
+                    "accent": "1"
+                },
+                {
+                    "string": "business or idea",
+                    "accent": "0"
+                }
+            ],
+            "text": "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse <br /> molestie consequat, vel illum dolore eu feugiat nulla.",
+            "button1": {
+                "enable": "1",
+                "label": "Read More",
+                "link": "/about"
+            },
+            "button2": {
+                "enable": "0",
+                "label": "Watch Video",
+                "link": ""
+            }
+        },
+        {
+            "image": "img/photo/6.jpg",
+            "subtitle": { "first": "Our", "second": "Inspiration" },
+            "title": [
+                {
+                    "string": "The",
+                    "accent": "0"
+                },
+                {
+                    "string": "Freedom",
+                    "accent": "1"                    
+                },
+                {
+                    "string": "to focus on <br />improving",
+                    "accent": "0"
+                },
+                {
+                    "string": "Your",
+                    "accent": "1"
+                },
+                {
+                    "string": "business or idea",
+                    "accent": "0"
+                }
+            ],
+            "text": "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse <br /> molestie consequat, vel illum dolore eu feugiat nulla.",
+            "button1": {
+                "enable": "1",
+                "label": "Read More",
+                "link": "/about"
+            },
+            "button2": {
+                "enable": "0",
+                "label": "Watch Video",
+                "link": ""
+            }
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Sora:wght@100;200;300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
+
+$font-1: 'Syne', sans-serif;
+$font-2: 'Sora', sans-serif;
+$font-3: 'Satisfy', cursive;
+
+$dark: rgba(18, 24, 32, 1);
+$light: rgba(255, 255, 255, 1);
+$accent: rgba(245, 124, 0, 1);
+
+$dt-5: rgba(18, 24, 32, .05);
+$dt-10: rgba(18, 24, 32, .1);
+$dt-20: rgba(18, 24, 32, .2);
+$dt-30: rgba(18, 24, 32, .3);
+$dt-40: rgba(18, 24, 32, .4);
+$dt-50: rgba(18, 24, 32, .5);
+$dt-60: rgba(18, 24, 32, .6);
+$dt-70: rgba(18, 24, 32, .7);
+$dt-80: rgba(18, 24, 32, .8);
+$dt-90: rgba(18, 24, 32, .9);
+$dt-95: rgba(18, 24, 32, .95);
+
+$lt-5: rgba(255, 255, 255, .05);
+$lt-10: rgba(255, 255, 255, .1);
+$lt-20: rgba(255, 255, 255, .2);
+$lt-30: rgba(255, 255, 255, .3);
+$lt-40: rgba(255, 255, 255, .4);
+$lt-50: rgba(255, 255, 255, .5);
+$lt-60: rgba(255, 255, 255, .6);
+$lt-70: rgba(255, 255, 255, .7);
+$lt-80: rgba(255, 255, 255, .8);
+$lt-90: rgba(255, 255, 255, .9);
+$lt-95: rgba(255, 255, 255, .95);
+
+$h1: 60px;
+$h2: 42px;
+$h3: 26px;
+$h4: 22px;
+$h5: 18px;
+$h6: 16px;
+
+$text: 15px;
+
+$t-sm: .2s cubic-bezier(0, 0, 0.3642, 1);
+$t-md: .4s cubic-bezier(0, 0, 0.3642, 1);
+$t-lg: .6s cubic-bezier(0, 0, 0.3642, 1);

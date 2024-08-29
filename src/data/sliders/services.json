@@ -1,0 +1,78 @@
+{
+    "subtitle": "Our Services and Solutions",
+    "title": "Technological Applications",
+    "items": [
+        {
+            "name": "Data Secuity",
+            "text": "Accelerate innovation with world class tech teams our all service.",
+            "list": [
+                { "value": "Accelerate innovation." },
+                { "value": "With world-class tech teams." },
+                { "value": "Our all service offerings to enhance." },
+                { "value": "Simply drag, drop and customize." }    
+            ],
+            "button": "Learn More",
+            "link": "/contact"
+        },
+        {
+            "name": "SEO and Optimazation",
+            "text": "Accelerate innovation with world class tech teams our all service.",
+            "list": [
+                { "value": "Accelerate innovation." },
+                { "value": "With world-class tech teams." },
+                { "value": "Our all service offerings to enhance." },
+                { "value": "Simply drag, drop and customize." }    
+            ],
+            "button": "Learn More",
+            "link": "/contact"
+        },
+        {
+            "name": "Analytics and Research",
+            "text": "Accelerate innovation with world class tech teams our all service.",
+            "list": [
+                { "value": "Accelerate innovation." },
+                { "value": "With world-class tech teams." },
+                { "value": "Our all service offerings to enhance." },
+                { "value": "Simply drag, drop and customize." }    
+            ],
+            "button": "Learn More",
+            "link": "/contact"
+        },
+        {
+            "name": "IT Management Services",
+            "text": "Accelerate innovation with world class tech teams our all service.",
+            "list": [
+                { "value": "Accelerate innovation." },
+                { "value": "With world-class tech teams." },
+                { "value": "Our all service offerings to enhance." },
+                { "value": "Simply drag, drop and customize." }    
+            ],
+            "button": "Learn More",
+            "link": "/contact"
+        },
+        {
+            "name": "Web Development",
+            "text": "Accelerate innovation with world class tech teams our all service.",
+            "list": [
+                { "value": "Accelerate innovation." },
+                { "value": "With world-class tech teams." },
+                { "value": "Our all service offerings to enhance." },
+                { "value": "Simply drag, drop and customize." }    
+            ],
+            "button": "Learn More",
+            "link": "/contact"
+        },
+        {
+            "name": "UI/UX Design",
+            "text": "Accelerate innovation with world class tech teams our all service.",
+            "list": [
+                { "value": "Accelerate innovation." },
+                { "value": "With world-class tech teams." },
+                { "value": "Our all service offerings to enhance." },
+                { "value": "Simply drag, drop and customize." }    
+            ],
+            "button": "Learn More",
+            "link": "/contact"
+        }
+    ]
+}

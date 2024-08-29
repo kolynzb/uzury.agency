@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "icon": "img/icons/md/1.svg",
+            "subtitle": "Data Security",
+            "title": "Quis ipsum suspendisse <br />ultrices gravida"
+        },
+        {
+            "icon": "img/icons/md/6.svg",
+            "subtitle": "SEO and Optimazation",
+            "title": "Quis ipsum suspendisse <br />ultrices gravida"
+        },
+        {
+            "icon": "img/icons/md/4.svg",
+            "subtitle": "Analytics and Research",
+            "title": "Quis ipsum suspendisse <br />ultrices gravida"
+        },
+        {
+            "icon": "img/icons/md/2.svg",
+            "subtitle": "IT Management Services",
+            "title": "Quis ipsum suspendisse <br />ultrices gravida"
+        }
+    ]
+}

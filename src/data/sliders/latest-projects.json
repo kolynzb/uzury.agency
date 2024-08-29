@@ -1,0 +1,12 @@
+{
+    "title": "Latest Projects",
+    "numOfItems": "4",
+    "button1": {
+        "label": "View All Cases",
+        "link": "/portfolio"
+    },
+    "button2": {
+        "label": "Get Started",
+        "link": "/contact"
+    }
+}

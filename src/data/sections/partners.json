@@ -1,0 +1,35 @@
+{
+    "title": "test",
+    "items": [
+        {
+            "image": "img/partners/1.png",
+            "alt": "partner",
+            "link": "#."
+        },
+        {
+            "image": "img/partners/2.png",
+            "alt": "partner",
+            "link": "#."
+        },
+        {
+            "image": "img/partners/3.png",
+            "alt": "partner",
+            "link": "#."
+        },
+        {
+            "image": "img/partners/4.png",
+            "alt": "partner",
+            "link": "#."
+        },
+        {
+            "image": "img/partners/5.png",
+            "alt": "partner",
+            "link": "#."
+        },
+        {
+            "image": "img/partners/6.png",
+            "alt": "partner",
+            "link": "#."
+        }
+    ]
+}

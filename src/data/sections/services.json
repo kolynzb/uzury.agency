@@ -1,0 +1,49 @@
+{
+    "title": {"first": "How We Can", "second": "Help You"},
+    "column1": {
+        "heading": "IT Services",
+        "items": [
+            {
+                "num": "01",
+                "name": "Dedicated Team",
+                "icon": "img/icons/md/1.svg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            {
+                "num": "02",
+                "name": "QA and Testing",
+                "icon": "img/icons/md/2.svg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            {
+                "num": "03",
+                "name": "SaaS",
+                "icon": "img/icons/md/3.svg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+        ]
+    },
+    "column2": {
+        "heading": "IT Solutions",
+        "items": [
+            {
+                "num": "04",
+                "name": "Blockchain",
+                "icon": "img/icons/md/4.svg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            {
+                "num": "05",
+                "name": "Artificial Intelligence",
+                "icon": "img/icons/md/5.svg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            {
+                "num": "06",
+                "name": "Internet of Things",
+                "icon": "img/icons/md/6.svg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+        ]
+    }
+}

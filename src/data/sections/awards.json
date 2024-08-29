@@ -1,0 +1,28 @@
+{
+    "bg_image": "img/photo/9.jpg",
+    "subtitle": "Hard Work",
+    "title": { "first": "Our", "second": "Awards", "third": "and Tecognitions" },
+    "description": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose.",
+    "button": {
+        "label": "About us",
+        "link": "/about"
+    },
+    "items": [
+        {
+            "name": "CSS Design",
+            "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose."
+        },
+        {
+            "name": "W3 Design Award",
+            "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose."
+        },
+        {
+            "name": "The FWA Award",
+            "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose."
+        },
+        {
+            "name": "WWW Awards",
+            "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose."
+        }
+    ]
+}
