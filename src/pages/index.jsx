@@ -11,9 +11,10 @@ const ComingSoon = () => {
           {/* mil-top-panel-transparent */}
           <div className="container-fluid">
             <Link href="/" style={{ width: 140 }} >
-              <Image src="/logo/logo.svg" className="" style={{
+              <Image src="/logo/logo.svg" className="d-none d-md-block" style={{
                 filter: "brightness(0) invert(1)"
               }} width={100} height={100} />
+              <Image src="/logo/logo.svg" className="d-block d-md-none" width={100} height={100} />
             </Link>
             <div className="mil-navigation">
               <p className="mil-light">
