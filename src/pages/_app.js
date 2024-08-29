@@ -11,10 +11,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-          {/* seo begin */}
-          <title>ITSulu</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          {/* seo end */}        
+        {/* seo begin */}
+        <title>Uzury</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* seo end */}
       </Head>
       <Component {...pageProps} />
     </>

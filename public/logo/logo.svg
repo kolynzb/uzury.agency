@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.08 151.04">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 24px;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: Xirod-Regular, Xirod;
+      }
+
+      .cls-3, .cls-4 {
+        opacity: 0;
+      }
+
+      .cls-2 {
+        font-size: 118.83px;
+      }
+
+      .cls-4 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <g id="final">
+    <path d="M26.86,34.96v40.52c0,15.29,10.38,22.93,31.13,22.93h33.39V52.96h20.2V118.14H52.76c-7.05,0-13.41-.95-19.07-2.85-5.67-1.9-10.5-4.71-14.5-8.44-4-3.72-7.09-8.32-9.27-13.78-2.18-5.47-3.27-11.76-3.27-18.89V34.96H26.86Z"/>
+    <text class="cls-2" transform="translate(0 118)"><tspan class="cls-4" x="0" y="0">u</tspan><tspan class="cls-3" x="114.31" y="0">z</tspan><tspan x="231.48" y="0">ur</tspan><tspan class="cls-3" x="476.02" y="0">y</tspan></text>
+    <g>
+      <polygon points="177.85 52.65 113.21 118 98.08 118 98.08 53 122.72 53 122.72 52.65 177.85 52.65"/>
+      <path d="M243.08,35V118h-57.38c24.08,0,36.67-10.73,37.78-32.2h-19.37c-.63,4.44-2.1,7.92-4.39,10.46-2.3,2.53-5.55,3.8-9.75,3.8h-31.96l62.81-65.06h22.26Z"/>
+    </g>
+    <rect x="50.08" y="101" width="59" height="17"/>
+    <rect x="230.08" y="99" width="83" height="19"/>
+    <rect x="237.08" y="87" width="12" height="16"/>
+    <rect x="6.08" width="587" height="20"/>
+    <path d="M594.32,35.26v41.83c0,6.5-.91,36.3-2.73,41.41-1.82,5.11-4.5,9.45-8.02,13.01-3.53,3.56-7.86,6.28-13.01,8.14-5.15,1.86-11.05,2.79-17.71,2.79h-62.85v-19.73h62.38c6.18,0,10.93-.97,14.08-3.15,6.62-4.57,4.37-29.17,5.48-33.21h-86.93V35.26h20.2v32.92h68.92V35.26h20.2Z"/>
+    <text class="cls-1" transform="translate(5.87 141.87)"><tspan x="0" y="0">Visualize AND we cre</tspan><tspan class="cls-5" x="411.64" y="0">a</tspan><tspan x="435.79" y="0">te</tspan></text>
+  </g>
+</svg>
