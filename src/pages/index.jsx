@@ -36,7 +36,7 @@ const ComingSoon = () => {
       {/* coming soon */}
       <div className="mil-dark-bg mil-add-page">
         <img
-          src="img/photo/20.jpg"
+          src="https://bslthemes.com/html/itsulu/img/photo/20.jpg"
           alt="background"
           className="mil-background-image"
         />
@@ -58,7 +58,7 @@ const ComingSoon = () => {
                   </h4>
                 </div>
                 <div className="col-lg-7">
-                  <p className="mil-light-soft mil-mb-30">
+                  <p style={{ opacity: "0" }} className="mil-light-soft mil-mb-30">
                     Lorem ipsum dolor sit amet, consectetuer <br />
                     adipiscing elit sed diam nonummy.
                   </p>
