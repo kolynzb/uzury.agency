@@ -1,3 +1,4 @@
+"use client"
 import { sliderProps } from "@/common/sliderProps";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";

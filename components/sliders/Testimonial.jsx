@@ -1,3 +1,4 @@
+"use client";
 import { sliderProps } from "@/common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -37,7 +38,7 @@ const Home1TestimonialSlider = () => {
           className="swiper-container mil-revi-slider"
         >
           {Content.items.map((item, key) => (
-            <SwiperSlide className="swiper-slide">
+            <SwiperSlide key={key} className="swiper-slide">
               <div className="mil-review">
                 <div className="mil-stars mil-mb-30">
                   <img src="img/icons/sm/11.svg" alt="quote" />

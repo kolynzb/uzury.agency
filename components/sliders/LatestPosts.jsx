@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { sliderProps } from "../../common/sliderProps";
@@ -56,7 +57,7 @@ const LatestThinking = ( {posts} ) => {
           className="swiper-container mil-blog-slider mil-mb-90"
         >
           {latestPosts.map((item, key) => (
-          <SwiperSlide className={`swiper-slide ${item.classOne}`}>
+          <SwiperSlide key={key} className={`swiper-slide ${item.classOne}`}>
             <Link href="publication" className={`mil-card ${item.classTwo}`}>
               { item.tempType == 'one' &&
               <>

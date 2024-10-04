@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { sliderProps } from "../../common/sliderProps";
@@ -35,7 +37,7 @@ const LatestProjects = ( {projects} ) => {
           className="swiper-container mil-works-slider mil-mb-90"
         >
           {projects.slice(0, SectionData.numOfItems).map((item, key) => (
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide key={key} className="swiper-slide">
             <Link href="project" className="mil-card">
               <div className="mil-cover-frame">
                 <img src={item.image} alt={item.title} />

@@ -1106,7 +1106,7 @@ footer {
 }
 
 .mil-deco {
-    background-image: url(../img/deco/deco-1.svg);
+    background-image: url("/img/deco/deco-1.svg");
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -1115,7 +1115,7 @@ footer {
     height: 140px;
 
     &.mil-deco-accent {
-        background-image: url(../img/deco/deco-2.svg);
+        background-image: url("/img/deco/deco-2.svg");
         z-index: 1;
     }
 
