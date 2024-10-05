@@ -12,10 +12,10 @@ import { structureTool } from "sanity/structure";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 import { structure } from "./sanity/structure";
-import StudioLogo from "./components/studio/StudioLogo";
+import StudioLogo from "./components/studio/studio-logo";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { codeInput } from "@sanity/code-input";
-import { scheduledPublishing } from "@sanity/scheduled-publishing";
+// import { scheduledPublishing } from "@sanity/scheduled-publishing";
 import {
   dashboardTool,
   sanityTutorialsWidget,
@@ -28,27 +28,31 @@ import { randomQuoteWidget } from "./sanity/components/dashboard-widgets/quote-w
 import { assist } from "@sanity/assist";
 import { myTheme } from "./lib/sanity.theme";
 import { table } from '@sanity/table';
-
+import {siteConfig} from "@/config/site";
+// TODO: ADD workspaces https://www.sanity.io/docs/workspaces
 export default defineConfig({
   basePath: "/studio",
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
-  title: "Kolynzb Blog",
-  subtitle: "Login To Manage The Blog",
+  title: ` ${siteConfig.name} CMS`,
+  subtitle: `Login To the ${siteConfig.name} CMS`,
+  icon:StudioLogo,
   studio: {
     components: {
       logo: StudioLogo,
     },
   },
+  theme: myTheme,
+
   plugins: [
     structureTool({ structure }),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     unsplashImageAsset(),
-    scheduledPublishing(),
+    // scheduledPublishing(),
     codeInput(),
     assist(),
     table(),

@@ -1,10 +1,10 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Qraft Labs",
+  name: "Uzury",
   description: "Qraft Labs pioneers groundbreaking research at the intersection of the future of work and educational technology (edtech). Our innovative studies and insights drive transformative solutions for navigating the evolving landscape of work and learning. Explore our cutting-edge research to stay ahead in the rapidly changing world of work and education",
   slogan: "",
-  url: "https://labs.qraftacademy.com/",
+  url: "https://uzury.agency/",
   logo: {
     dark: "",
     light: "",

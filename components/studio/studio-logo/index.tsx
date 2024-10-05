@@ -7,9 +7,9 @@ const StudioLogo = (props: LogoProps) => {
     <figure className={styles.container}>
       <Image
         className={styles.logo}
-        width={50}
-        height={50}
-        src="https://github.com/kolynzb.png"
+        width={25}
+        height={25}
+        src="/logo/submark.png"
         alt="logo"
       />
       {/* <>{props.renderDefault(props)}</> */}
