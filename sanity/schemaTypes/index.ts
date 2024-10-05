@@ -21,13 +21,15 @@ import serviceType from "@/sanity/schemaTypes/documents/company/service-type";
 import teamType from "@/sanity/schemaTypes/documents/company/team-type";
 import partnerType from "@/sanity/schemaTypes/documents/company/partner-type";
 import eventType from "@/sanity/schemaTypes/documents/company/event-type";
+import settingsType from "@/sanity/schemaTypes/documents/settings-type";
+import socialFields from "@/sanity/schemaTypes/objects/social-fields";
 
 const blogSchemas = [categoryType, postType, authorType, seriesType];
 const portfolioSchemas = [caseStudyType,caseStudyCategoryType,testimonialType,clientType];
 const companySchemas = [accoladeType,careerType,eventType,faqType,partnerType,serviceType,teamType];
 
-const objects = [youtube, quote, seo, _break, codeSandbox];
+const objects = [youtube, quote, seo, _break, codeSandbox,socialFields];
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [...blogSchemas,...portfolioSchemas,...companySchemas, ...objects, blockContentType],
+  types: [...blogSchemas,...portfolioSchemas,...companySchemas, ...objects,settingsType, blockContentType],
 };

@@ -9,7 +9,7 @@ export default function StudioLogo() {
         className={styles.logo}
         width={25}
         height={25}
-        src="/logo/submark.png"
+        src="https://res.cloudinary.com/kolynz-b/image/upload/v1728153061/Asset_8_4x_xembji.png"
         alt="logo"
       />
     </figure>

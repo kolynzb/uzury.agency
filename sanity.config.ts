@@ -29,6 +29,7 @@ import { assist } from "@sanity/assist";
 import { myTheme } from "./lib/sanity.theme";
 import { table } from '@sanity/table';
 import {siteConfig} from "@/config/site";
+import {singletonPlugin} from "@/sanity/plugins/singleton-plugin";
 // TODO: ADD workspaces https://www.sanity.io/docs/workspaces
 export default defineConfig({
   basePath: "/studio",
@@ -69,6 +70,15 @@ export default defineConfig({
         sanityTutorialsWidget(),
       ],
     }),
+    // presentationTool({
+    //   locate,
+    //   previewUrl: {
+    //     draftMode: {
+    //       enable: "/api/draft",
+    //     },
+    //   },
+    // }),
+    singletonPlugin({types: ["settings"]}),
     // giphyAssetSourcePlugin({
     //   apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
     // }),
