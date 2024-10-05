@@ -2,8 +2,9 @@ import type {StructureResolver} from 'sanity/structure'
 import {RiSettings5Line} from "react-icons/ri";
 import { BsBuildings } from "react-icons/bs";
 import { FaNetworkWired } from "react-icons/fa";
-import {ComposeIcon} from "@sanity/icons";
+import { RiQuillPenLine } from "react-icons/ri";
 import { SlOptionsVertical } from "react-icons/sl";
+import { IoOptionsOutline } from "react-icons/io5";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 // https://www.sanity.io/docs/structure-builder-typical-use-cases#segmented-content
@@ -23,9 +24,9 @@ export const structure: StructureResolver = (S) => {
 
     const blogListItem =  S.listItem()
         .title('Blog')
-        .icon(ComposeIcon)
+        .icon(RiQuillPenLine)
             .child(
-                S.list().title("Our blog").items([
+                S.list().title("Our Blog").items([
                     S.documentTypeListItem('post').title('Posts'),
                     S.documentTypeListItem('blogCategory').title('Categories'),
                     S.documentTypeListItem('series').title('Series'),
@@ -60,7 +61,7 @@ export const structure: StructureResolver = (S) => {
 
     const siteSettings = S.listItem()
         .title("Global Settings")
-        .icon(RiSettings5Line)
+        .icon(IoOptionsOutline)
         .child(S.editor().schemaType("settings").documentId("settings"));
 
     return  S.list()
