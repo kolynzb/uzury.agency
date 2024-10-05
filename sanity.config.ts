@@ -15,7 +15,6 @@ import { structure } from "./sanity/structure";
 import StudioLogo from "./components/studio/studio-logo";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { codeInput } from "@sanity/code-input";
-// import { scheduledPublishing } from "@sanity/scheduled-publishing";
 import {
   dashboardTool,
   sanityTutorialsWidget,
@@ -37,7 +36,7 @@ export default defineConfig({
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
-  title: ` ${siteConfig.name} CMS`,
+  title: ` ${siteConfig.name} Africa`,
   subtitle: `Login To the ${siteConfig.name} CMS`,
   icon: StudioLogo,
   logo: StudioLogo,
@@ -49,11 +48,8 @@ export default defineConfig({
   theme: myTheme,
   plugins: [
     structureTool({ structure }),
-    // Vision is for querying with GROQ from inside the Studio
-    // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     unsplashImageAsset(),
-    // scheduledPublishing(),
     codeInput(),
     assist(),
     table(),

@@ -11,19 +11,19 @@ export const description = [
         _key: '4a58edd077880',
         _type: 'span',
         marks: [],
-        text: 'A statically generated blog example using ',
+        text: 'The Official',
       },
       {
         _key: '4a58edd077881',
         _type: 'span',
         marks: ['ec5b66c9b1e0'],
-        text: 'Next.js',
+        text: 'Uzury',
       },
       {
         _key: '4a58edd077882',
         _type: 'span',
         marks: [],
-        text: ' and ',
+        text: ' Website ',
       },
       {
         _key: '4a58edd077883',
@@ -42,7 +42,7 @@ export const description = [
       {
         _key: 'ec5b66c9b1e0',
         _type: 'link',
-        href: 'https://nextjs.org/',
+        href: 'https://uzury.agency/',
       },
       {
         _key: '1f8991913ea8',

@@ -1,13 +1,17 @@
 import type {StructureResolver} from 'sanity/structure'
 import {RiSettings5Line} from "react-icons/ri";
+import { BsBuildings } from "react-icons/bs";
+import { FaNetworkWired } from "react-icons/fa";
+import {ComposeIcon} from "@sanity/icons";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 // https://www.sanity.io/docs/structure-builder-typical-use-cases#segmented-content
 export const structure: StructureResolver = (S) => {
 
     const portfolioListItem =   S.listItem()
-            .title('Portfolio')
-            .child(
+        .title('Portfolio')
+        .icon(FaNetworkWired)
+        .child(
                 S.list().title("Our Portfolio").items([
                     S.documentTypeListItem('caseStudy').title('Case Studies'),
                     S.documentTypeListItem('caseStudyCategory').title('Categories'),
@@ -15,8 +19,10 @@ export const structure: StructureResolver = (S) => {
                     S.documentTypeListItem('testimonial').title('Testimonials'),
                 ])
             )
+
     const blogListItem =  S.listItem()
-            .title('Blog')
+        .title('Blog')
+        .icon(ComposeIcon)
             .child(
                 S.list().title("Our blog").items([
                     S.documentTypeListItem('post').title('Posts'),
@@ -28,6 +34,7 @@ export const structure: StructureResolver = (S) => {
 
         const companyListItem = S.listItem()
         .title('Company')
+            .icon(BsBuildings)
         .child(
             S.list().title("Our Company").items([
                 S.documentTypeListItem('accolade').title('Accolades'),
@@ -44,7 +51,7 @@ export const structure: StructureResolver = (S) => {
             .child(
                 S.list().title("Other").items([
                     ...S.documentTypeListItems().filter(
-                        (item) => item.getId() && !['post', 'blogCategory', 'author','series','client', 'caseStudyCategory', 'caseStudy','testimonial','accolade','career','faq','partner','event','team','service'].includes(item.getId()!),
+                        (item) => item.getId() && !['post', 'blogCategory', 'author','series','client', 'caseStudyCategory', 'caseStudy','testimonial','accolade','career','faq','partner','event','team','service','settings'].includes(item.getId()!),
                     ),
                 ])
             )
