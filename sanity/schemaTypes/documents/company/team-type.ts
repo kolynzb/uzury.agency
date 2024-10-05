@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { LuContact2 } from "react-icons/lu";
 
 export default defineType({
-    name: "teamMate",
+    name: "team",
     title: "Team Mate",
     type: "document",
     icon:LuContact2,

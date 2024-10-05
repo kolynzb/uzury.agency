@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { LuAward } from "react-icons/lu";
 
 export default defineType({
-  name: "accolades",
+  name: "accolade",
   title: "Accolades",
   icon:LuAward,
   type: "object",

@@ -1,5 +1,5 @@
-import { client } from "@sanity/lib/client";
-import { IAuthor, IPost, IPostCategory } from "../interfaces/sanity.interface";
+import { client } from "@/sanity/lib/client";
+import { IAuthor, IPost, IPostCategory } from "@/interfaces/sanity.interface";
 import {
   getAllPostsQuery,
   getAllTagsQuery,

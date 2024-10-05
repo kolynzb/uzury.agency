@@ -38,14 +38,14 @@ export default defineConfig({
   schema,
   title: ` ${siteConfig.name} CMS`,
   subtitle: `Login To the ${siteConfig.name} CMS`,
-  icon:StudioLogo,
+  icon: StudioLogo,
+  logo: StudioLogo,
   studio: {
     components: {
       logo: StudioLogo,
     },
   },
   theme: myTheme,
-
   plugins: [
     structureTool({ structure }),
     // Vision is for querying with GROQ from inside the Studio
