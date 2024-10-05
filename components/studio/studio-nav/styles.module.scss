@@ -1,0 +1,42 @@
+$color: #c170ff;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.back_to_site_link {
+  color: $color;
+  display: flex;
+  align-items: center;
+}
+.back_arrow {
+  color: $color;
+  height: 20px;
+  margin-right: 10px;
+  width: 20px;
+}
+
+.nav_left {
+  overflow: hidden;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  // border: solid 2px #8f00ff;
+}
+
+.title {
+  font-weight: bold;
+  color: #fff;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.my_link {
+  font-weight: bold;
+  color: $color;
+  margin-left: 20px;
+}
