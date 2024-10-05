@@ -1,4 +1,4 @@
-import Layouts from "@/layouts/Layouts";
+import Layouts from "@/layouts";
 import Link from "next/link";
 const E404 = () => {
   return (

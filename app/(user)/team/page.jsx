@@ -1,5 +1,5 @@
 import PageBanner from "@/components/PageBanner";
-import Layouts from "@/layouts/Layouts";
+import Layouts from "@/layouts/Index";
 import Link from "next/link";
 const Team = () => {
   return (

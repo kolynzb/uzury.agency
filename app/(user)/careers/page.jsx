@@ -1,5 +1,5 @@
 import PageBanner from "@/components/PageBanner";
-import Layouts from "@/layouts/Layouts";
+import Layouts from "@/layouts/Index";
 import dynamic from "next/dynamic";
 
 import { getSortedPostsData } from "../../../lib/posts";
@@ -10,7 +10,7 @@ const CareersBannerSlider = dynamic(
     ssr: false,
   }
 );
-const LatestPostsSlider = dynamic( () => import("../../../components/sliders/LatestPosts"), { ssr: false } );
+const LatestPostsSlider = dynamic( () => import("../../../components/sliders/latest-posts"), { ssr: false } );
 
 const Careers = (props) => {
   return (

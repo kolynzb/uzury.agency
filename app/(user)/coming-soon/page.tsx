@@ -1,10 +1,10 @@
-import Layouts from "@/layouts/Layouts";
+import Index from "@/layouts";
 import Link from "next/link";
 import Image from "next/image";
 
 const ComingSoon = () => {
   return (
-    <Layouts noHeader noFooter>
+    <Index noHeader noFooter>
       {/* top bar */}
       <div className="mil-top-position mil-fixed">
         <div className="mil-top-panel mil-top-panel-transparent mil-animated">
@@ -86,7 +86,7 @@ const ComingSoon = () => {
           <p className="mil-text-sm mil-light-soft">All Rights Reserved.</p>
         </div>
       </div>
-    </Layouts>
+    </Index>
   );
 };
 export default ComingSoon;

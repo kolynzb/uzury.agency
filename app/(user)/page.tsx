@@ -1,27 +1,28 @@
 import React from "react";
-import Layouts from "../../layouts/Layouts";
+import Layout from "../../layouts";
 import dynamic from "next/dynamic";
 
 // import { getSortedPostsData } from "../../lib/posts";
 // import { getSortedProjectsData } from "../../lib/projects";
 
-import PartnersSection from "../../components/sections/Partners";
-import ServicesSection from "../../components/sections/Services";
-import HowItWorksSection from "../../components/sections/HowItWorks";
-import SkillsSection from "../../components/sections/Skills";
-import ContactSection from "../../components/sections/Contact";
-import Divider from "../../components/sections/Divider";
+import PartnersSection from "../../components/sections/partners";
+import ServicesSection from "../../components/sections/services";
+import HowItWorksSection from "../../components/sections/how-it-works";
+import SkillsSection from "../../components/sections/skills";
+import ContactSection from "../../components/sections/contact";
+import Divider from "../../components/sections/divider";
+import {getFeaturedPosts} from "@/lib/sanity.api";
 
-const LatestProjectsSlider = dynamic(() => import("../../components/sliders/LatestProjects"), { ssr: false });
-const LatestPostsSlider = dynamic(() => import("../../components/sliders/LatestPosts"), { ssr: false });
-const HeroSlideshowSlider = dynamic(() => import("../../components/sliders/HeroSlideshow"), { ssr: false });
-const TestimonialSlider = dynamic(() => import("../../components/sliders/Testimonial"), { ssr: false });
+const LatestProjectsSlider = dynamic(() => import("../../components/sliders/latest-projects"), { ssr: false });
+const LatestPostsSlider = dynamic(() => import("../../components/sliders/latest-posts"), { ssr: false });
+const HeroSlideshowSlider = dynamic(() => import("../../components/sliders/hero-slideshow"), { ssr: false });
+const TestimonialSlider = dynamic(() => import("../../components/sliders/testimonial"), { ssr: false });
 
-const Home1 = () => {
-  // const posts = getSortedPostsData();
+const Home1 = async () => {
+  const posts = await getFeaturedPosts();
   // const projects = getSortedProjectsData();
   return (
-    <Layouts transparent>
+    <Layout transparent>
       <HeroSlideshowSlider />
       <PartnersSection />
       <Divider />
@@ -31,10 +32,10 @@ const Home1 = () => {
       <HowItWorksSection />
       <SkillsSection />
       <Divider />
-      {/* <LatestPostsSlider posts={posts} /> */}
+       {/*<LatestPostsSlider posts={posts} /> */}
       <TestimonialSlider />
       <ContactSection />
-    </Layouts>
+    </Layout>
   );
 };
 export default Home1;

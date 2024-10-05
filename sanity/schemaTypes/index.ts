@@ -10,10 +10,14 @@ import quote from "./objects/quote";
 import _break from "./objects/break";
 import seo from "./objects/seo";
 import codeSandbox from "./objects/code-sandbox";
+import caseStudyType from "@/sanity/schemaTypes/documents/portfolio/case-study-type";
+import caseStudyCategoryType from "@/sanity/schemaTypes/documents/portfolio/case-study-category-type";
 
 const blogSchemas = [categoryType, postType, authorType, seriesType];
+const caseStudySchemas = [caseStudyType,caseStudyCategoryType];
+
 const objects = [youtube, quote, seo, _break, codeSandbox];
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [...blogSchemas, ...objects, blockContentType],
+  types: [...blogSchemas,...caseStudySchemas, ...objects, blockContentType],
 };

@@ -1,5 +1,5 @@
 import ContactForm from "@/components/ContactForm";
-import Layouts from "@/layouts/Layouts";
+import Layouts from "@/layouts/Index";
 import Link from "next/link";
 const TeamSingle = () => {
   return (

@@ -1,5 +1,5 @@
 import PageBanner from "@/components/PageBanner";
-import Layouts from "@/layouts/Layouts";
+import Layouts from "@/layouts/Index";
 import dynamic from "next/dynamic";
 const PriceTestimonialSlider = dynamic(
   () => import("@/components/sliders/PriceTestimonialSlider"),

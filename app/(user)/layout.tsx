@@ -3,8 +3,9 @@ import '@/public/styles/plugins/bootstrap-grid.css';
 import '@/public/styles/plugins/font-awesome.min.css';
 import '@/public/styles/plugins/swiper.min.css';
 import GoogleAnalyticsScript from "@/components/tools/google-analytics-script";
-import { Analytics } from "@vercel/analytics/react";
+// import { Analytics } from "@vercel/analytics/react";
 import { siteConfig, seoKeywords } from "@/config/site";
+import type {Metadata} from "next";
 
 export const metadata: Metadata = {
     title: {
@@ -81,7 +82,7 @@ export default function RootLayout({
                     {children}
                 </main>
                 
-        <Analytics />
+        {/*<Analytics />*/}
             </body>
         </html>
     );

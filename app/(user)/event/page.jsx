@@ -1,4 +1,4 @@
-import Layouts from "@/layouts/Layouts";
+import Layouts from "@/layouts/Index";
 import Link from "next/link";
 const Event = () => {
   return (

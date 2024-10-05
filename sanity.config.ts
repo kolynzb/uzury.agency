@@ -12,7 +12,7 @@ import { structureTool } from "sanity/structure";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 import { structure } from "./sanity/structure";
-import StudioLogo from "@components/studio/StudioLogo";
+import StudioLogo from "./components/studio/StudioLogo";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { codeInput } from "@sanity/code-input";
 import { scheduledPublishing } from "@sanity/scheduled-publishing";
@@ -22,7 +22,6 @@ import {
   projectUsersWidget,
   projectInfoWidget,
 } from "@sanity/dashboard";
-import { table } from '@sanity/table';
 import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 import { randomQuoteWidget } from "./sanity/components/dashboard-widgets/quote-widget";
 // import { giphyAssetSourcePlugin } from "sanity-plugin-asset-source-giphy";
