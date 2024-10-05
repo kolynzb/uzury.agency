@@ -3,6 +3,7 @@ import {RiSettings5Line} from "react-icons/ri";
 import { BsBuildings } from "react-icons/bs";
 import { FaNetworkWired } from "react-icons/fa";
 import {ComposeIcon} from "@sanity/icons";
+import { SlOptionsVertical } from "react-icons/sl";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 // https://www.sanity.io/docs/structure-builder-typical-use-cases#segmented-content
@@ -47,18 +48,20 @@ export const structure: StructureResolver = (S) => {
             ])
         )
     const otherListItem =  S.listItem()
-            .title('Other')
-            .child(
-                S.list().title("Other").items([
-                    ...S.documentTypeListItems().filter(
-                        (item) => item.getId() && !['post', 'blogCategory', 'author','series','client', 'caseStudyCategory', 'caseStudy','testimonial','accolade','career','faq','partner','event','team','service','settings'].includes(item.getId()!),
-                    ),
-                ])
-            )
-const siteSettings = S.listItem()
-    .title("Global Settings")
-    .icon(RiSettings5Line)
-    .child(S.editor().schemaType("settings").documentId("settings"));
+        .title('Other')
+        .icon(SlOptionsVertical)
+        .child(
+            S.list().title("Other").items([
+                ...S.documentTypeListItems().filter(
+                    (item) => item.getId() && !['post', 'blogCategory', 'author','series','client', 'caseStudyCategory', 'caseStudy','testimonial','accolade','career','faq','partner','event','team','service','settings'].includes(item.getId()!),
+                ),
+            ])
+        )
+
+    const siteSettings = S.listItem()
+        .title("Global Settings")
+        .icon(RiSettings5Line)
+        .child(S.editor().schemaType("settings").documentId("settings"));
 
     return  S.list()
     .title('CMS')
