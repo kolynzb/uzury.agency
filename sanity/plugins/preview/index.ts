@@ -1,6 +1,6 @@
 import type {DefaultDocumentNodeResolver} from "sanity/desk";
 import PostPreview from "./post-preview";
-import PagePreview from "./page-preview";
+import CaseStudyPreview from "./case-study-preview";
 
 export const previewDocumentNode = (): DefaultDocumentNodeResolver => {
   return (S, {schemaType}) => {
@@ -8,9 +8,9 @@ export const previewDocumentNode = (): DefaultDocumentNodeResolver => {
       return S.document().views([S.view.form(), S.view.component(PostPreview).title("Preview Post")]);
     }
 
-    // if (schemaType === "page") {
-    //   return S.document().views([S.view.form(), S.view.component(PagePreview).title("Preview Page")]);
-    // }
+    if (schemaType === "caseStudy") {
+      return S.document().views([S.view.form(), S.view.component(CaseStudyPreview).title("Preview Case Study")]);
+    }
 
     return S.document().views([S.view.form()]);
   };

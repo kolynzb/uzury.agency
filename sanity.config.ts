@@ -7,9 +7,8 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from "./sanity/env";
+import {apiVersion, basePath, dataset, projectId} from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 import { structure } from "./sanity/structure";
 import StudioLogo from "./components/studio/studio-logo";
@@ -23,18 +22,21 @@ import {
 } from "@sanity/dashboard";
 import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 import { randomQuoteWidget } from "./sanity/components/dashboard-widgets/quote-widget";
-// import { giphyAssetSourcePlugin } from "sanity-plugin-asset-source-giphy";
+import { giphyAssetSourcePlugin } from "sanity-plugin-asset-source-giphy";
 import { assist } from "@sanity/assist";
 import { myTheme } from "./lib/sanity.theme";
 import { table } from '@sanity/table';
 import {siteConfig} from "@/config/site";
 import {singletonPlugin} from "@/sanity/plugins/singleton-plugin";
+import {locate} from "@/sanity/plugins/locate";
+import {presentationTool} from "sanity/presentation";
+import {debugSecrets} from "@sanity/preview-url-secret/sanity-plugin-debug-secrets";
+
 // TODO: ADD workspaces https://www.sanity.io/docs/workspaces
 export default defineConfig({
-  basePath: "/studio",
+  basePath,
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   title: ` ${siteConfig.name} Africa`,
   subtitle: `Login To the ${siteConfig.name} CMS`,
@@ -66,17 +68,19 @@ export default defineConfig({
         sanityTutorialsWidget(),
       ],
     }),
-    // presentationTool({
-    //   locate,
-    //   previewUrl: {
-    //     draftMode: {
-    //       enable: "/api/draft",
-    //     },
-    //   },
-    // }),
+    presentationTool({
+      locate,
+      previewUrl: {
+        draftMode: {
+          enable: "/services/draft",
+        },
+      },
+    }),
     singletonPlugin({types: ["settings"]}),
-    // giphyAssetSourcePlugin({
-    //   apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
-    // }),
+    giphyAssetSourcePlugin({
+      apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
+    }),
+    // The remaining plugins are only loaded in dev mode
+    process.env.NODE_ENV !== "production" && debugSecrets(),
   ],
 });

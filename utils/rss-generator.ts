@@ -1,6 +1,6 @@
 import RSS from 'rss';
 import { siteConfig } from '@config/site';
-import { getPosts } from '@lib/sanity.api';
+import { getPosts } from '@lib/sanity.services';
 
 export default async function generateRssFeed() {
     const { url, logo } = siteConfig

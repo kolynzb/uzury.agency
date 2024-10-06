@@ -2,6 +2,9 @@
   "name": "uzury",
   "version": "1.1",
   "private": true,
+  "description": "Sanity & Next.js template",
+  "author": "Collins Benda",
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",

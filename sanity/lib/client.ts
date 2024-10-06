@@ -1,10 +1,15 @@
 import { createClient } from 'next-sanity'
 
-import { apiVersion, dataset, projectId } from '../env'
+import {apiVersion, basePath, dataset, projectId, revalidateSecret} from '../env'
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: revalidateSecret ? false : true,
+  perspective: "published",
+  stega: {
+    studioUrl: basePath,
+  },
 })

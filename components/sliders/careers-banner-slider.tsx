@@ -1,4 +1,6 @@
-import { sliderProps } from "@/common/sliderProps";
+"use client";
+
+import { sliderProps } from "@/common/slider-props";
 import { Swiper, SwiperSlide } from "swiper/react";
 const CareersBannerSlider = () => {
   return (

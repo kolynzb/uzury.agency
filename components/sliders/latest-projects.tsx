@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { sliderProps } from "../../common/sliderProps";
+import { sliderProps } from "../../common/slider-props";
 
 import SectionData from '../../data/sliders/latest-projects';
 

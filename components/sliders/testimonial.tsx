@@ -1,5 +1,5 @@
 "use client";
-import { sliderProps } from "@/common/sliderProps";
+import { sliderProps } from "@/common/slider-props";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Content from '@/data/sliders/testimonial.json';

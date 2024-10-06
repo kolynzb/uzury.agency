@@ -1,4 +1,4 @@
-import { getChildrenText } from "@lib/sanity.utils";
+import { getChildrenText } from "@/lib/sanity.utils";
 import React from "react";
 import {
   Accordion,
@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Minus, Plus } from "lucide-react";
 import styles from "./styles.module.scss";
-
+// TODO:  Remove Chakra  REPLACE WITH normal bootstrap
 const TableOfContents = (props: any) => (
   <Accordion>
     <AccordionItem>

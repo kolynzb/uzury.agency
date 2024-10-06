@@ -1,5 +1,4 @@
 import type {StructureResolver} from 'sanity/structure'
-import {RiSettings5Line} from "react-icons/ri";
 import { BsBuildings } from "react-icons/bs";
 import { FaNetworkWired } from "react-icons/fa";
 import { RiQuillPenLine } from "react-icons/ri";

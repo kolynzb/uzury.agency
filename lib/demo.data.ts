@@ -11,7 +11,7 @@ export const description = [
         _key: '4a58edd077880',
         _type: 'span',
         marks: [],
-        text: 'The Official',
+        text: 'The Official ',
       },
       {
         _key: '4a58edd077881',
@@ -25,12 +25,7 @@ export const description = [
         marks: [],
         text: ' Website ',
       },
-      {
-        _key: '4a58edd077883',
-        _type: 'span',
-        marks: ['1f8991913ea8'],
-        text: 'Sanity',
-      },
+
       {
         _key: '4a58edd077884',
         _type: 'span',
@@ -43,11 +38,6 @@ export const description = [
         _key: 'ec5b66c9b1e0',
         _type: 'link',
         href: 'https://uzury.agency/',
-      },
-      {
-        _key: '1f8991913ea8',
-        _type: 'link',
-        href: 'https://sanity.io/',
       },
     ],
     style: 'normal',

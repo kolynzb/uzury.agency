@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import styles from "./styles.module.scss";
 import { NavbarProps } from "sanity";
-import { getRandomQuote } from "../../../api/quotes";
+import { getRandomQuote } from "@/services/quotes.service";
 
 const StudioNav = async (props: NavbarProps) => {
   const randomQuote = await getRandomQuote();

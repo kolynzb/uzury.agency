@@ -65,3 +65,13 @@ export interface Settings {
     title?: string
   }
 }
+
+import {SanityDocument} from "@sanity/types";
+// import {SanityDocument,Slug} from "@sanity/types";
+
+export interface ICaseStudy extends SanityDocument {
+  _type: "caseStudy";
+  featuredImage?: Image;
+  slug: Slug;
+
+}

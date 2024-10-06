@@ -1,5 +1,5 @@
 "use client"
-import { sliderProps } from "@/common/sliderProps";
+import { sliderProps } from "@/common/slider-props";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Content from "../../data/sliders/hero-slideshow.json";

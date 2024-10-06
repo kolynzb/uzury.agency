@@ -1,6 +1,6 @@
 import React from "react";
 
-const PagePreview = (props) => {
+const CaseStudyPreview = (props) => {
   const {displayed} = props.document;
   if (!displayed?.slug?.current) {
     return <div>The page needs a slug before it can be previewed.</div>;
@@ -8,7 +8,7 @@ const PagePreview = (props) => {
 
   const slug = displayed?.slug?.current === "frontpage" ? "" : displayed?.slug?.current;
 
-  const url = new URL("/api/draft", location.origin);
+  const url = new URL("/services/draft", location.origin);
   url.searchParams.set("slug", slug);
   url.searchParams.set("type", "page");
 
@@ -24,4 +24,4 @@ const PagePreview = (props) => {
   );
 };
 
-export default PagePreview;
+export default CaseStudyPreview;

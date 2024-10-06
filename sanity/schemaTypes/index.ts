@@ -23,12 +23,13 @@ import partnerType from "@/sanity/schemaTypes/documents/company/partner-type";
 import eventType from "@/sanity/schemaTypes/documents/company/event-type";
 import settingsType from "@/sanity/schemaTypes/documents/settings-type";
 import socialFields from "@/sanity/schemaTypes/objects/social-fields";
+import gallery from "@/sanity/schemaTypes/objects/gallery";
 
 const blogSchemas = [categoryType, postType, authorType, seriesType];
 const portfolioSchemas = [caseStudyType,caseStudyCategoryType,testimonialType,clientType];
 const companySchemas = [accoladeType,careerType,eventType,faqType,partnerType,serviceType,teamType];
 
-const objects = [youtube, quote, seo, _break, codeSandbox,socialFields];
+const objects = [youtube, quote, seo, _break, codeSandbox,socialFields,gallery];
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...blogSchemas,...portfolioSchemas,...companySchemas, ...objects,settingsType, blockContentType],

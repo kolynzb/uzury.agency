@@ -5,7 +5,7 @@ import {
   DashboardWidget,
   LayoutConfig,
 } from "@sanity/dashboard";
-import { getRandomQuote } from "../../../api/quotes";
+import { getRandomQuote } from "@/services/quotes.service";
 
 function Quote() {
   const [isLoading, setIsLoading] = useState(false);
