@@ -121,6 +121,9 @@ export const blockContentType = defineType({
     defineArrayMember({
       type: "quote",
     }),
+    defineArrayMember({
+      type: "gallery",
+    }),
     defineArrayMember({ type: "codeSandbox" }),
     defineArrayMember({
       type: "table",
