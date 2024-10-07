@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import { defineQuery } from "next-sanity";
 
 /*
  * ------Groq FIELDS------
@@ -135,3 +136,17 @@ export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`;
+
+/*
+ * ------CASE STUDIES ------
+ */
+
+export const CASE_STUDIES_QUERY =
+    defineQuery(`*[_type == "caseStudy" && defined(slug.current)][0...12]{
+  _id, title, slug
+}`);
+
+export const CASE_STUDY_QUERY =
+    defineQuery(`*[_type == "post" && slug.current == $slug][0]{
+  title, body, mainImage
+}`);

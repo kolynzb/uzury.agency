@@ -4,12 +4,13 @@
   "private": true,
   "description": "Sanity & Next.js template",
   "author": "Collins Benda",
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sanity:schema":"npx sanity@latest schema extract",
+    "sanity:typegen":"npx sanity@latest typegen generate"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.15",
@@ -30,6 +31,7 @@
     "gray-matter": "^4.0.3",
     "intl-segmenter-polyfill": "^0.4.4",
     "lucide-react": "^0.277.0",
+    "luxon": "^3.5.0",
     "next": "15.0.0-canary.104",
     "next-sanity": "9",
     "next-sanity-image": "^6.1.1",

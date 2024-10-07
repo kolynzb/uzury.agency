@@ -76,7 +76,6 @@ export const postType = defineType({
           }),
       options: {
         hotspot: true,
-        captionField: "caption",
       },
       fields: [
         {

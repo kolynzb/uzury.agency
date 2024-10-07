@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
-import { getAllResearchTags, getResearchPostsMeta } from "@/services/research.service";
+import { getAllTags, getAuthors, getPosts } from "@/sanity/lib/api";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
@@ -8,25 +8,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: baseUrl, priority: 1, lastModified: new Date() },
     {
-      url: `${baseUrl}research`,
+      url: `${baseUrl}post`,
       changeFrequency: "weekly",
       priority: 0.8,
       lastModified: new Date(),
     },
     {
-      url: `${baseUrl}team`,
-      priority: 0.8,
-      changeFrequency: "monthly",
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}work`,
-      priority: 0.8,
-      changeFrequency: "monthly",
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}services`,
+      url: `${baseUrl}about`,
       priority: 0.8,
       changeFrequency: "monthly",
       lastModified: new Date(),
@@ -38,51 +26,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
-      url: `${baseUrl}privacy`,
+      url: `${baseUrl}privacy-policy`,
       priority: 0.1,
       lastModified: new Date(),
     },
     {
-      url: `${baseUrl}terms`,
-      priority: 0.1,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}faq`,
-      priority: 0.1,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}about`,
+      url: `${baseUrl}search`,
       priority: 0.4,
       lastModified: new Date(),
     },
-    ...(await generateResearchPostsSitemapObjects()).map((post) => ({
-      url: `${baseUrl}research/${post.id}`,
-      lastModified: new Date(post.date),
+    ...(await generateBlogPostsSitemapObjects()).map((post) => ({
+      url: `${baseUrl}post/${post.slug}`,
+      lastModified: new Date(post._updatedAt),
       priority: 0.5,
     })),
-    // ...(await generateBlogAuthorsSitemapObjects()).map((author) => ({
-    //   url: `${baseUrl}author/${author.slug}`,
-    //   lastModified: new Date(author._updatedAt),
-    //   priority: 0.4,
-    // })),
-    ...(await generateResearchTagsSitemapObjects()).map((tag) => ({
-      url: `${baseUrl}research/tag/${tag}`,
+    ...(await generateBlogAuthorsSitemapObjects()).map((author) => ({
+      url: `${baseUrl}author/${author.slug}`,
+      lastModified: new Date(author._updatedAt),
+      priority: 0.4,
+    })),
+    ...(await generateBlogTagsSitemapObjects()).map((tag) => ({
+      url: `${baseUrl}tag/${tag}`,
       priority: 0.2,
     })),
   ];
 }
 
-const generateResearchPostsSitemapObjects = async () => {
-  const postData = (await getResearchPostsMeta())!;
+const generateBlogPostsSitemapObjects = async () => {
+  const postData = await getPosts();
   return postData;
 };
-// const generateBlogAuthorsSitemapObjects = async () => {
-//   const data = await getAuthors();
-//   return data;
-// };
-const generateResearchTagsSitemapObjects = async () => {
-  const data = (await getAllResearchTags())!;
+const generateBlogAuthorsSitemapObjects = async () => {
+  const data = await getAuthors();
+  return data;
+};
+const generateBlogTagsSitemapObjects = async () => {
+  const data = await getAllTags();
   return data;
 };

@@ -4,7 +4,7 @@ import {
   OpenGraphImage,
   width,
 } from "@/sanity/components/OpenGraphImage";
-import { getPost } from "@/lib/sanity.api";
+import { getPost } from "@/sanity/lib/api";
 
 export const runtime = "edge";
 export default async function og({ params }: { params: { slug: string } }) {

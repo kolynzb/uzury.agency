@@ -7,9 +7,14 @@ const nextConfig = {
       {
         hostname:"res.cloudinary.com"
       },
-      {hostname: "cdn.sanity.io"}
+      {
+        hostname: "cdn.sanity.io"
+      }
     ]
-  }
+  },
+  experimental: {
+    taint: true,
+  },
 }
 
-module.exports = nextConfig
+export default nextConfig

@@ -11,7 +11,7 @@ import {RichTextComponents} from "@/components/rich-text";
 import { PortableText, toPlainText } from "@portabletext/react";
 import { PortableTextBlock } from "sanity";
 import { notFound } from "next/navigation";
-import { getCategories, getPost, getPosts } from "@/lib/sanity.api";
+import { getCategories, getPost, getPosts } from "@/sanity/lib/api";
 import React, { useEffect, useState } from "react";
 import { IPostCategory, IPost } from "@/interfaces/sanity.interface";
 

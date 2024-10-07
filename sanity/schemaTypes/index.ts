@@ -9,7 +9,7 @@ import youtube from "./objects/youtube";
 import quote from "./objects/quote";
 import _break from "./objects/break";
 import seo from "./objects/seo";
-import codeSandbox from "./objects/code-sandbox";
+import codeSandbox from "./objects/iframe-embed";
 import caseStudyType from "@/sanity/schemaTypes/documents/portfolio/case-study-type";
 import caseStudyCategoryType from "@/sanity/schemaTypes/documents/portfolio/case-study-category-type";
 import testimonialType from "@/sanity/schemaTypes/documents/portfolio/testimonial-type";

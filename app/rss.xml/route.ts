@@ -1,4 +1,4 @@
-import generateRssFeed from "@utils/rss-generator";
+import generateRssFeed from "@/utils/rss-generator";
 
 export async function GET() {
     const feed = await generateRssFeed();

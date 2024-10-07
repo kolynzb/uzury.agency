@@ -1,4 +1,4 @@
-import { getChildrenText } from "@/lib/sanity.utils";
+import { getChildrenText } from "@/utils/sanity";
 import React from "react";
 import {
   Accordion,

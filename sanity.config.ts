@@ -22,15 +22,15 @@ import {
 } from "@sanity/dashboard";
 import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 import { randomQuoteWidget } from "./sanity/components/dashboard-widgets/quote-widget";
-import { giphyAssetSourcePlugin } from "sanity-plugin-asset-source-giphy";
+// import { giphyAssetSourcePlugin } from "sanity-plugin-asset-source-giphy";
 import { assist } from "@sanity/assist";
-import { myTheme } from "./lib/sanity.theme";
+import { myTheme } from "./sanity/theme";
 import { table } from '@sanity/table';
 import {siteConfig} from "@/config/site";
 import {singletonPlugin} from "@/sanity/plugins/singleton-plugin";
-import {locate} from "@/sanity/plugins/locate";
 import {presentationTool} from "sanity/presentation";
 import {debugSecrets} from "@sanity/preview-url-secret/sanity-plugin-debug-secrets";
+import {resolve} from "@/sanity/presentation/resolve";
 
 // TODO: ADD workspaces https://www.sanity.io/docs/workspaces
 export default defineConfig({
@@ -69,18 +69,18 @@ export default defineConfig({
       ],
     }),
     presentationTool({
-      locate,
+      resolve,
       previewUrl: {
-        draftMode: {
-          enable: "/services/draft",
+        previewMode: {
+          enable: '/api/draft-mode/enable',
         },
       },
     }),
     singletonPlugin({types: ["settings"]}),
-    giphyAssetSourcePlugin({
-      apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
-    }),
+    // giphyAssetSourcePlugin({
+    //   apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
+    // }),
     // The remaining plugins are only loaded in dev mode
-    process.env.NODE_ENV !== "production" && debugSecrets(),
+    // process.env.NODE_ENV !== "production" && debugSecrets(),
   ],
 });

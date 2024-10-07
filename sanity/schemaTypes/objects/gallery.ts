@@ -16,17 +16,22 @@ export default defineType({
         }),
         defineField({
             name: "display",
-            title: "Display Type",
+            title: "Layout Display ",
             type: "string",
             options: {
-                list: ["Bento", "Courasel"],// TODO: Look for more types
-            },
+                list: [
+                    { title: "Normal Grid", value: "grid" },
+                    { title: "Bento Grid", value: "bento" },
+                    { title: "Slider", value: "slider" }
+                ],
+                layout: "radio" },
             description: "Indicates the way you want to display the images in the gallery",
         }),
         defineField({
             name: "images",
             title: "Images",
             type: "array",
+            description: "Add multiple images to create a gallery.",
             of: [
                 {
                     type: "image",
@@ -34,11 +39,19 @@ export default defineType({
                         hotspot: true,
                         captionField: "caption",
                     },
+                    validation: (Rule) => Rule.required(),
                     fields: [
+                        {
+                            name: "caption",
+                            type: "string",
+                            title: "Caption",
+                            options: { isHighlighted: true },
+                        },
                         {
                             name: "alt",
                             title: "Alternative Text",
                             type: "string",
+                            options: { isHighlighted: true },
                             description: "Important for accessibility. Describe the image for visually impaired users.",
                             validation: (Rule) =>
                                 Rule.required().error("Alternative text is required for accessibility."),
@@ -50,7 +63,7 @@ export default defineType({
     ],
     preview: {
         select: {
-            displayType: "display",
+            display: "display",
             title: "title",
             images: "images",
         },

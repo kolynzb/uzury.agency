@@ -7,7 +7,7 @@ const PostPreview = (props) => {
     return <div>The post needs a slug before it can be previewed.</div>;
   }
 
-  const url = new URL("/services/draft", location.origin);
+  const url = new URL("/services/draft-mode", location.origin);
   url.searchParams.set("slug", displayed.slug.current);
   url.searchParams.set("type", "post");
 

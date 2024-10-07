@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {getAllTags, getCategories, getFeaturedPosts} from "@/lib/sanity.api";
+import {getAllTags, getCategories, getFeaturedPosts} from "@/sanity/lib/api";
 import Image from "next/image";
 
 const BlogSideBar = async ()=> {

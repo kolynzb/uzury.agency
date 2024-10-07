@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import {client, sanityFetch} from "@/sanity/lib/client";
 import { IAuthor, IPost, IPostCategory } from "@/interfaces/sanity.interface";
 import {
   getAllPostsQuery,
@@ -13,8 +13,9 @@ import {
   getPostCommentsQuery,
   getPostsUnderTagQuery,
   searchPostsQuery,
-  getPostMetadataQuery
-} from "./sanity.queries";
+  getPostMetadataQuery, CASE_STUDIES_QUERY
+} from "./queries";
+import {CASE_STUDIES_QUERYResult} from "@/sanity.types";
 
 /*
  * ------POSTS------
@@ -134,3 +135,14 @@ export const getAllTags = async (): Promise<string[]> => {
 
   return response;
 };
+
+/*
+ * ------CASE STUDY Tag------
+ */
+
+export const getCaseStudies = async () => {
+  const response = await sanityFetch<CASE_STUDIES_QUERYResult>({
+    query: CASE_STUDIES_QUERY,
+  });
+  return reponses
+}

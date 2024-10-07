@@ -1,4 +1,4 @@
-import { getFeaturedPosts, getPost, getPostMetadata } from "@/lib/sanity.api";
+import { getFeaturedPosts, getPost, getPostMetadata } from "@/sanity/lib/api";
 
 type Props = {
   children: React.ReactNode;

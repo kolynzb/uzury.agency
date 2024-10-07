@@ -11,7 +11,7 @@ import HowItWorksSection from "../../components/sections/how-it-works";
 import SkillsSection from "../../components/sections/skills";
 import ContactSection from "../../components/sections/contact";
 import Divider from "../../components/sections/divider";
-import {getFeaturedPosts} from "@/lib/sanity.api";
+import {getFeaturedPosts} from "@/sanity/lib/api";
 
 const LatestProjectsSlider = dynamic(() => import("../../components/sliders/latest-projects"), { ssr: false });
 const LatestPostsSlider = dynamic(() => import("../../components/sliders/latest-posts"), { ssr: false });

@@ -124,7 +124,9 @@ export const blockContentType = defineType({
     defineArrayMember({
       type: "gallery",
     }),
-    defineArrayMember({ type: "codeSandbox" }),
+    defineArrayMember({
+      type: "iframeEmbed",
+    }),
     defineArrayMember({
       type: "table",
       icon: LuTable2,

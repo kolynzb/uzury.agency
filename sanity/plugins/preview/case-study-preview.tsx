@@ -8,7 +8,7 @@ const CaseStudyPreview = (props) => {
 
   const slug = displayed?.slug?.current === "frontpage" ? "" : displayed?.slug?.current;
 
-  const url = new URL("/services/draft", location.origin);
+  const url = new URL("/services/draft-mode", location.origin);
   url.searchParams.set("slug", slug);
   url.searchParams.set("type", "page");
 

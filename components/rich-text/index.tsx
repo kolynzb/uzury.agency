@@ -12,7 +12,7 @@ import speakingurl from "speakingurl";
 import CodeBlock from "@/components/blocks/code-block";
 import { SanityImage } from "@/components/blocks/sanity-image";
 import { QuoteBlock } from "@/components/blocks/quote-block";
-import { getChildrenText } from "@/lib/sanity.utils";
+import { getChildrenText } from "@/utils/sanity";
 
 export const RichTextComponents: Partial<PortableTextReactComponents> = {
   types: {

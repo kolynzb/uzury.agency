@@ -3,7 +3,7 @@ import Layouts from "@/layouts";
 import Link from "next/link";
 import BlogSideBar from "@/app/(user)/blog/_components/blog-sidebar";
 import BlogSidebar from "./_components/blog-sidebar";
-import {getPosts} from "@/lib/sanity.api";
+import {getPosts} from "@/sanity/lib/api";
 import BlogCard from "./_components/card";
 
 const Blog = async () => {
