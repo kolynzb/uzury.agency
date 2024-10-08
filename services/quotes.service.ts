@@ -10,25 +10,33 @@ export const fetchRandomQuote = async () => {
   return data;
 };
 
-export async function getRandomQuote(): Promise<{
-  content: string;
-  _id: string;
-  author: string;
-}> {
-  // https://docs.quotable.io/docs/api
-try{
-  const response = await axios.get(
-    "https://api.quotable.io/random?maxLength=50"
-  );
-
-  return response.data;
-} catch (error) {
-  // Handle the error here
-  console.error("Error fetching the random quote:", error);
-  return {
-    content: "Accepting our mortality helps us focus on what truly matters in life",
-    _id: "",
-    author: "Mark Manson",
-  };
+export interface Quote {
+  q: string;
+  a: string;
 }
+
+export async function getRandomQuote(): Promise<Quote> {
+  // ZenQuotes API: https://zenquotes.io/
+  try {
+    const response = await axios.get("https://zenquotes.io/api/quote/random/");
+
+    // Ensure we access the first item from the response array
+    const quoteData = response.data[0];
+
+    console.log("quote", quoteData);
+
+    // Return the quote and author in the expected format
+    return {
+      q: quoteData.q,
+      a: quoteData.a,
+    };
+  } catch (error) {
+    console.error("Error fetching the random quote:", error);
+
+    // Return a fallback quote in case of an error
+    return {
+      q: "Accepting our mortality helps us focus on what truly matters in life.",
+      a: "Mark Manson",
+    };
+  }
 }
