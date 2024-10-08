@@ -48,7 +48,7 @@ export const structure: StructureResolver = (S) => {
             ])
         )
     const otherListItem =  S.listItem()
-        .title('Other')
+        .title('Miscellaneous')
         .icon(SlOptionsVertical)
         .child(
             S.list().title("Other").items([

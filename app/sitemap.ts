@@ -64,3 +64,4 @@ const generateBlogTagsSitemapObjects = async () => {
   const data = await getAllTags();
   return data;
 };
+// https://roboto.studio/blog/ultimate-sanity-seo-best-practices

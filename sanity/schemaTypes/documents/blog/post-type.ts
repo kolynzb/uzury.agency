@@ -21,6 +21,24 @@ export const postType = defineType({
       group: "content",
       validation: (Rule) => Rule.required().warning("A title is required for each post."),
     }),
+      defineField({
+        name: 'noIndex',
+        title: 'Do not index this page',
+        description: "If checked, this content won't be indexed by search engines.",
+        type: 'boolean',
+        group:'seo',
+        initialValue: () => false,
+      }),
+    {
+      // Useful for none studio members
+      // *[_type == "blogPost" && !seoHideFromLists]{
+      name: 'seoHideFromLists',
+      title: 'Hide from lists',
+      description: "If checked, this content won't appear in any list pages. A user will still be able to visit the page if they know the exact URL",
+      type: 'boolean',
+      initialValue: () => false,
+      group: 'settings',
+    },
     defineField({
       name: "slug",
       title: "Slug",
@@ -82,14 +100,13 @@ export const postType = defineType({
           name: "caption",
           type: "string",
           title: "Image Caption",
-          description: "Describe the image content, if relevant.",
+          description: "A caption that sits below the image for context",
         },
         {
           name: "alt",
           title: "Alternative Text",
           type: "string",
-          description: "Important for accessibility. Describe the image for visually impaired users.",
-          validation: (Rule) =>
+          description: "An alternative text for folks with screen readers. Describe what is in the image",          validation: (Rule) =>
               Rule.required().error("Alternative text is required for accessibility."),
         }
       ],
