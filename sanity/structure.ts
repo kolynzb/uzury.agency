@@ -3,10 +3,12 @@ import { BsBuildings } from "react-icons/bs";
 import { FaNetworkWired } from "react-icons/fa";
 import { RiQuillPenLine } from "react-icons/ri";
 import { SlOptionsVertical } from "react-icons/sl";
-import { IoOptionsOutline } from "react-icons/io5";
+import {CogIcon} from "@sanity/icons";
+
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 // https://www.sanity.io/docs/structure-builder-typical-use-cases#segmented-content
+
 export const structure: StructureResolver = (S) => {
 
     const portfolioListItem =   S.listItem()
@@ -60,7 +62,7 @@ export const structure: StructureResolver = (S) => {
 
     const siteSettings = S.listItem()
         .title("Global Settings")
-        .icon(IoOptionsOutline)
+        .icon(CogIcon)
         .child(S.editor().schemaType("settings").documentId("settings"));
 
     return  S.list()

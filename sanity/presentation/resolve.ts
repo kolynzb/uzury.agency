@@ -1,13 +1,31 @@
 // ./src/sanity/presentation/resolve.ts
 
 import {
+    defineDocuments,
     defineLocations,
     PresentationPluginOptions,
 } from "sanity/presentation";
+import {resolveHref} from "@/sanity/lib/utils";
+
+const mainDocuments = defineDocuments([
+    {
+        route: '/portfolio/:slug',
+        filter: `_type == "caseStudy" && slug.current == $slug`,
+    },
+    {
+        route: '/blog/:slug',
+        filter: `_type == "blog" && slug.current == $slug`,
+    },
+])
+
 // https://www.sanity.io/guides/sanity-presentation-with-nextjs#f0347f024c8c
 export const resolve: PresentationPluginOptions["resolve"] = {
+    mainDocuments,
     locations: {
-        // Add more locations for other post types
+        settings: defineLocations({
+            message: 'This document is used on all pages',
+            tone: 'caution',
+        }),
         post: defineLocations({
             select: {
                 title: "title",
@@ -17,9 +35,24 @@ export const resolve: PresentationPluginOptions["resolve"] = {
                 locations: [
                     {
                         title: doc?.title || "Untitled",
-                        href: `/posts/${doc?.slug}`,
+                        href: `/blog/${doc?.slug}`,
                     },
-                    { title: "Home", href: `/` },
+                    { title: "Blog", href: `/blog/` },
+                ],
+            }),
+        }),
+        caseStudy: defineLocations({
+            select: {
+                title: "title",
+                slug: "slug.current",
+            },
+            resolve: (doc) => ({
+                locations: [
+                    {
+                        title: doc?.title || "Untitled",
+                        href:  resolveHref('caseStudies', doc?.slug)!,
+                    },
+                    { title: "Portfolio", href: `/portfolio/` },
                 ],
             }),
         }),

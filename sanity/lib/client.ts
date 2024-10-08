@@ -12,6 +12,7 @@ export const client = createClient({
   // Set to false if statically generating pages, using ISR or tag-based revalidation
   useCdn:  true,
   // perspective: "published",
+    //   useCdn: false, // We will rely on Next.js cache
   stega: {
     enabled: process.env.NEXT_PUBLIC_VERCEL_ENV === "preview",
     studioUrl: basePath,

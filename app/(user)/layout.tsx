@@ -6,8 +6,8 @@ import GoogleAnalyticsScript from "@/components/tools/google-analytics-script";
 // import { Analytics } from "@vercel/analytics/react";
 import { siteConfig, seoKeywords } from "@/config/site";
 import type {Metadata} from "next";
-import { VisualEditing } from "next-sanity";
-import { draftMode } from "next/headers";
+import DraftPreviewBtn from "@/components/draft-preview-btn";
+
 export const metadata: Metadata = {
     title: {
       default: siteConfig.name,
@@ -80,18 +80,9 @@ export default function RootLayout({
       </head>
             <body>
                 <main className="">
-                    {draftMode().isEnabled && (
-                        <a
-                            className="fixed right-0 bottom-0 bg-blue-500 text-white p-4 m-4"
-                            href="/api/draft-mode/disable"
-                        >
-                            Disable preview mode
-                        </a>
-                    )}
                     {children}
-                    {draftMode().isEnabled && <VisualEditing />}
+                    <DraftPreviewBtn/>
                 </main>
-                
         {/*<Analytics />*/}
             </body>
         </html>

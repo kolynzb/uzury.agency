@@ -25,7 +25,7 @@ const DefaultHeader = ({ transparent, headerTop,  extraClass }:Props) => {
             </ul>
             <div className="mil-ap-call-to-action">
               <div className="mil-icon-frame mil-icon-frame-sm">
-                <img src="img/icons/sm/4.svg" alt="icon" />
+                <img src="/img/icons/sm/4.svg" alt="icon" />
               </div>
               <p>Find out how Uzury Could save you over 2.400 US$ a year.</p>
             </div>
@@ -53,9 +53,7 @@ const DefaultHeader = ({ transparent, headerTop,  extraClass }:Props) => {
             <a className="mil-logo" style={{ width: 140 }}></a>
           </Link>
           <div
-
               className={cn(" mil-navigation",{"mil-active" : toggle })}
-
           >
             <nav>
               <ul>

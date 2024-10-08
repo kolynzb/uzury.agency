@@ -54,6 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 const generateBlogPostsSitemapObjects = async () => {
   const postData = await getPosts();
+  console.log(postData);
   return postData;
 };
 const generateBlogAuthorsSitemapObjects = async () => {
