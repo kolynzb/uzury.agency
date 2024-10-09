@@ -7,16 +7,16 @@ import {
 } from "sanity/presentation";
 import {resolveHref} from "@/sanity/lib/utils";
 
-// const mainDocuments = defineDocuments([
-//     {
-//         route: '/portfolio/:slug',
-//         filter: `_type == "caseStudy" && slug.current == $slug`,
-//     },
-//     {
-//         route: '/blog/:slug',
-//         filter: `_type == "blog" && slug.current == $slug`,
-//     },
-// ])
+const mainDocuments = defineDocuments([
+    {
+        route: '/portfolio/:slug',
+        filter: `_type == "caseStudy" && slug.current == $slug`,
+    },
+    {
+        route: '/blog/:slug',
+        filter: `_type == "post" && slug.current == $slug`,
+    },
+])
 
 // https://www.sanity.io/guides/sanity-presentation-with-nextjs#f0347f024c8c
 export const resolve: PresentationPluginOptions["resolve"] = {

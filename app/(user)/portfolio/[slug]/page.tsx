@@ -1,7 +1,29 @@
+"use client"
 import Layouts from "@/layouts";
 import Link from "next/link";
+import {useEffect, useState} from "react";
+import {ICaseStudy} from "@/interfaces/sanity.interface";
+import {getCaseStudy, getPost,} from "@/sanity/lib/api";
+import {notFound} from "next/navigation";
 
-const Project = () => {
+type Props = {
+  params: { slug: string };
+};
+
+const Project = ({ params }: Props) => {
+  const [caseStudy, setCaseStudy] = useState<ICaseStudy>();
+
+  useEffect(() => {
+    getCaseStudy(params.slug)
+        .then((study) => setCaseStudy(study))
+        .catch((error:any) => {
+          //TODO: Handle error if getPost fails
+
+          if (error.status === 404) {
+            notFound();
+          }
+        });
+  }, [params.slug]);
   return (
     <Layouts>
       {/* banner */}

@@ -1,5 +1,5 @@
 import {client, sanityFetch} from "@/sanity/lib/client";
-import { IAuthor, IPost, IPostCategory } from "@/interfaces/sanity.interface";
+import {IAuthor, ICaseStudy, IPost, IPostCategory} from "@/interfaces/sanity.interface";
 import {
   getAllPostsQuery,
   getAllTagsQuery,
@@ -13,7 +13,7 @@ import {
   getPostCommentsQuery,
   getPostsUnderTagQuery,
   searchPostsQuery,
-  getPostMetadataQuery, CASE_STUDIES_QUERY
+  getPostMetadataQuery, CASE_STUDIES_QUERY, CASE_STUDY_QUERY
 } from "./queries";
 import {CASE_STUDIES_QUERYResult} from "@/sanity.types";
 
@@ -140,9 +140,37 @@ export const getAllTags = async (): Promise<string[]> => {
  * ------CASE STUDY Tag------
  */
 
-export const getCaseStudies = async () => {
-  const response = await sanityFetch<CASE_STUDIES_QUERYResult>({
+export const getCaseStudies = async (): Promise<ICaseStudy[]> => {
+  const response = await sanityFetch<ICaseStudy[]>({
     query: CASE_STUDIES_QUERY,
   });
-  return reponses
+  return response;
+
+}
+export const getFeaturedCaseStudies = async (): Promise<ICaseStudy[]> => {
+  const response = await sanityFetch<ICaseStudy[]>({
+    query: CASE_STUDIES_QUERY,
+  });
+  return response;
+
+}
+
+export const getCaseStudy = async (slug:string): Promise<ICaseStudy> => {
+  const response = await sanityFetch<ICaseStudy>({
+    query: CASE_STUDY_QUERY,
+    params:{
+      slug
+    }
+  });
+  return response;
+}
+
+export const getCaseStudyMetadata = async (slug:string): Promise<ICaseStudy> => {
+  const response = await sanityFetch<ICaseStudy>({
+    query: CASE_STUDY_QUERY,
+    params:{
+      slug
+    }
+  });
+  return response;
 }

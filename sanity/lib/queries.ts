@@ -147,7 +147,7 @@ export const CASE_STUDIES_QUERY =
 }`);
 
 export const CASE_STUDY_QUERY =
-    defineQuery(`*[_type == "post" && slug.current == $slug][0]{
+    defineQuery(`*[_type == "caseStudy" && slug.current == $slug][0]{
   title, body, mainImage
 }`);
 

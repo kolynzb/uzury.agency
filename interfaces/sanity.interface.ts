@@ -71,7 +71,33 @@ import {SanityDocument} from "@sanity/types";
 
 export interface ICaseStudy extends SanityDocument {
   _type: "caseStudy";
-  featuredImage?: Image;
+  mainImage?: Image;
   slug: Slug;
+title: string;
+seoKeywords: string;
+industry: string;
+description: string;
+isFeatured: boolean;
+client: IClient;
+service: IService;
+body: PortableTextBlock[];
+categories:ICaseStudyCategory[];
+tags: string[];
+summary:string;
+url:string;
+}
 
+export interface IClient extends  SanityDocument {
+  _type: "client";
+}
+
+export interface IService extends  SanityDocument {
+  _type: "service";
+}
+
+export interface ICaseStudyCategory extends  SanityDocument {
+  title: string;
+  slug: string;
+  image: string;
+  description: string;
 }

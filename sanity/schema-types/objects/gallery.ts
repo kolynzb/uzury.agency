@@ -69,9 +69,9 @@ export default defineType({
             images: "images",
         },
     },
-    components: {
-        preview: GalleryPreview as any,
-    },
+    // components: {
+    //     preview: GalleryPreview as any,
+    // },
 });
 
 // https://www.sanity.io/guides/portable-text-how-to-add-a-custom-youtube-embed-block

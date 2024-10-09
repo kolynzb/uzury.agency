@@ -2,7 +2,7 @@
   "name": "uzury",
   "version": "1.1",
   "private": true,
-  "description": "Sanity & Next.js template",
+  "description": "Design Agency Website with inbuilt CMS",
   "author": "Collins Benda",
   "scripts": {
     "dev": "next dev",

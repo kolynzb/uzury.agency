@@ -1,5 +1,5 @@
 import PageBanner from "@/components/PageBanner";
-import Layouts from "@/layouts/Index";
+import Layouts from "@/layouts";
 import dynamic from "next/dynamic";
 
 import { getSortedPostsData } from "../../../lib/posts";

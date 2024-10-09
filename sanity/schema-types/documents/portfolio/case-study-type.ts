@@ -5,7 +5,7 @@ export default defineType({
   name: "caseStudy",
   title: "Case Study",
   type: "document",
-  icon:LuBriefcase,
+  icon: LuBriefcase,
   groups: [
     { name: "content", title: "Content" },
     { name: "media", title: "Media" },
@@ -71,6 +71,7 @@ export default defineType({
       description: "Select the client associated with this case study.",
       validation: (Rule) => Rule.required().warning("A client is required for this case study."),
     }),
+    // TODO:   Consider making them many
     defineField({
       name: "service",
       title: "Service",
@@ -101,13 +102,13 @@ export default defineType({
       group: "metadata",
       of: [{ type: "reference", to: { type: "caseStudyCategory" } }],
     }),
-    defineField({
-      name: "content",
-      title: "Detailed Content",
-      type: "blockContent",
-      group: "content",
-      description: "The main body content of the case study.",
-    }),
+    // defineField({
+    //   name: "content",
+    //   title: "Detailed Content",
+    //   type: "blockContent",
+    //   group: "content",
+    //   description: "The main body content of the case study.",
+    // }),
     defineField({
       name: "tags",
       title: "Tags",
@@ -141,7 +142,7 @@ export default defineType({
       description: "The URL of the video to play on hover over the case study card.",
     }),
     defineField({
-      name: "metaDescription",
+      name: "description",
       title: "Meta Description",
       type: "text",
       group: "metadata",
