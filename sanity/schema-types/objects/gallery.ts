@@ -21,7 +21,8 @@ export default defineType({
             options: {
                 list: [
                     { title: "Normal Grid", value: "grid" },
-                    { title: "Bento Grid", value: "bento" },
+                    { title: "Block", value: "block" },
+                    { title: "Bento", value: "bento" },
                     { title: "Slider", value: "slider" }
                 ],
                 layout: "radio" },

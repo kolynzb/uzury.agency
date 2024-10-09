@@ -8,8 +8,8 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, basePath, dataset, projectId} from "./sanity/env";
-import { schema } from "./sanity/schemaTypes";
+import { apiVersion, basePath, dataset, projectId } from "./sanity/env";
+import { schema } from "./sanity/schema-types";
 import { structure } from "./sanity/structure";
 import StudioLogo from "./components/studio/studio-logo";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
@@ -25,12 +25,12 @@ import { randomQuoteWidget } from "./sanity/components/dashboard-widgets/quote-w
 // import { giphyAssetSourcePlugin } from "sanity-plugin-asset-source-giphy";
 import { assist } from "@sanity/assist";
 import { myTheme } from "./sanity/theme";
-import { table } from '@sanity/table';
-import {siteConfig} from "@/config/site";
-import {singletonPlugin} from "@/sanity/plugins/singleton-plugin";
-import {presentationTool} from "sanity/presentation";
-import {debugSecrets} from "@sanity/preview-url-secret/sanity-plugin-debug-secrets";
-import {resolve} from "@/sanity/presentation/resolve";
+import { table } from "@sanity/table";
+import { siteConfig } from "@/config/site";
+import { singletonPlugin } from "@/sanity/plugins/singleton-plugin";
+import { presentationTool } from "sanity/presentation";
+import { debugSecrets } from "@sanity/preview-url-secret/sanity-plugin-debug-secrets";
+import { resolve } from "@/sanity/presentation/resolve";
 
 // TODO: ADD workspaces https://www.sanity.io/docs/workspaces
 export default defineConfig({
@@ -72,11 +72,11 @@ export default defineConfig({
       resolve,
       previewUrl: {
         previewMode: {
-          enable: '/api/draft-mode/enable',
+          enable: "/api/draft-mode/enable",
         },
       },
     }),
-    singletonPlugin({types: ["settings"]}),
+    singletonPlugin({ types: ["settings"] }),
     // giphyAssetSourcePlugin({
     //   apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
     // }),

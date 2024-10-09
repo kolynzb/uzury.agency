@@ -150,3 +150,5 @@ export const CASE_STUDY_QUERY =
     defineQuery(`*[_type == "post" && slug.current == $slug][0]{
   title, body, mainImage
 }`);
+
+

@@ -7,8 +7,8 @@
 import { DRAFT_MODE_ROUTE } from "../../env";
 import type { DefaultDocumentNodeResolver } from "sanity/structure";
 import { Iframe, IframeOptions } from "sanity-plugin-iframe-pane";
-import {authorType} from "../../schemaTypes/documents/blog/author-type";
-import {postType} from "../../schemaTypes/documents/blog/post-type";
+import { authorType } from "../../schema-types/documents/blog/author-type";
+import { postType } from "../../schema-types/documents/blog/post-type";
 
 import AuthorAvatarPreviewPane from "./AuthorAvatarPreviewPane";
 

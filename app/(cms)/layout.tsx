@@ -3,7 +3,7 @@ import type {Metadata} from "next";
 
 export const metadata: Metadata = {
   title: `CMS - ${ siteConfig.name}`,
-  description: 'Visualize and we create',
+  description: 'Visualize and We create',
   icons: [
     {
       rel: "apple-touch-icon",

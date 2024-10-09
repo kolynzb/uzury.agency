@@ -13,6 +13,7 @@ import CodeBlock from "@/components/blocks/code-block";
 import { SanityImage } from "@/components/blocks/sanity-image";
 import { QuoteBlock } from "@/components/blocks/quote-block";
 import { getChildrenText } from "@/utils/sanity";
+import {GalleryBlock} from "@/components/blocks/gallery-block";
 
 export const RichTextComponents: Partial<PortableTextReactComponents> = {
   types: {
@@ -24,9 +25,7 @@ export const RichTextComponents: Partial<PortableTextReactComponents> = {
     break: () => <hr />,
     code: ({ value }) => <CodeBlock data={value} />,
     quote: (props) => {
-      console.log("Quote Props", props);
       const { value } = props;
-
       return <QuoteBlock {...value} />;
     },
     youtube: ({ value }) => (
@@ -34,9 +33,12 @@ export const RichTextComponents: Partial<PortableTextReactComponents> = {
         <ReactPlayer url={value.url} />
       </figure>
     ),
-    codeSandbox: ({ value }) => (
+    gallery: ({ value }) => (
+        <GalleryBlock  {...value} />
+    ),
+    iframeEmbed: ({ value }) => (
       <iframe
-        title="CodeSandbox"
+        title={value.title}
         loading="lazy"
         src={value.url}
         className="-mx-4 h-[400px] w-full overflow-hidden rounded border-0"
