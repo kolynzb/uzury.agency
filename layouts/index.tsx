@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { accordion, milButtonClick, milButtonClick2 } from "@/common/utilits";
+import { accordion, milButtonClick, milButtonClick2 } from "@/common/utils";
 import Footer from "./footers";
 import Header from './headers';
 

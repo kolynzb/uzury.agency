@@ -69,7 +69,7 @@ export default defineConfig({
       ],
     }),
     presentationTool({
-      resolve,
+      // resolve,
       previewUrl: {
         previewMode: {
           enable: "/api/draft-mode/enable",
@@ -81,6 +81,7 @@ export default defineConfig({
     //   apiKey: process.env.NEXT_PUBLIC_GIPHY_API_KEY as string
     // }),
     // The remaining plugins are only loaded in dev mode
+    debugSecrets(),
     // process.env.NODE_ENV !== "production" && debugSecrets(),
   ],
 });

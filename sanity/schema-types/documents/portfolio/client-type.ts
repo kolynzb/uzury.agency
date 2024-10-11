@@ -5,7 +5,7 @@ export default defineType({
   name: "client",
   title: "Client",
   type: "document",
-  icon:LuUsers,
+  icon:LuUsers as any,
   fields: [
     defineField({
       name: "name",

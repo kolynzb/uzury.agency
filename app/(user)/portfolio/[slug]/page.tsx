@@ -3,7 +3,7 @@ import Layouts from "@/layouts";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import {ICaseStudy} from "@/interfaces/sanity.interface";
-import {getCaseStudy, getPost,} from "@/sanity/lib/api";
+import {getCaseStudy} from "@/sanity/lib/api";
 import {notFound} from "next/navigation";
 
 type Props = {

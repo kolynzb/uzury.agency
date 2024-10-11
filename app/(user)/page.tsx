@@ -11,7 +11,7 @@ import HowItWorksSection from "../../components/sections/how-it-works";
 import SkillsSection from "../../components/sections/skills";
 import ContactSection from "../../components/sections/contact";
 import Divider from "../../components/sections/divider";
-import {getFeaturedPosts} from "@/sanity/lib/api";
+import {getFeaturedCaseStudies, getFeaturedPosts} from "@/sanity/lib/api";
 
 const LatestProjectsSlider = dynamic(() => import("../../components/sliders/latest-projects"), { ssr: false });
 const LatestPostsSlider = dynamic(() => import("../../components/sliders/latest-posts"), { ssr: false });
@@ -20,7 +20,7 @@ const TestimonialSlider = dynamic(() => import("../../components/sliders/testimo
 
 const Home1 = async () => {
   const posts = await getFeaturedPosts();
-  // const projects = getSortedProjectsData();
+  const caseStudies = getFeaturedCaseStudies();
   return (
     <Layout transparent>
       <HeroSlideshowSlider />
@@ -28,7 +28,7 @@ const Home1 = async () => {
       <Divider />
       <ServicesSection />
       <Divider />
-      {/* <LatestProjectsSlider projects={projects} /> */}
+       {/*<LatestProjectsSlider projects={caseStudies} /> */}
       <HowItWorksSection />
       <SkillsSection />
       <Divider />

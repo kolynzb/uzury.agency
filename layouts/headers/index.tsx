@@ -1,5 +1,5 @@
 "use client";
-import { stickyNav } from "@/common/utilits";
+import { stickyNav } from "@/common/utils";
 import React, { useEffect } from "react";
 import DefaultHeader from "./default-header";
 import Header2 from "./header-two";

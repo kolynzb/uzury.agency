@@ -145,13 +145,13 @@ export const postType = defineType({
       group: "settings",
       type: "boolean",
     }),
-    // defineField({
-    //   name: "body",
-    //   description: "Write the main content of the post here.",
-    //   title: "Post Content",
-    //   type: "blockContent",
-    //   group: ["content"],
-    // }),
+    defineField({
+      name: "body",
+      description: "Write the main content of the post here.",
+      title: "Post Content",
+      type: "blockContent",
+      group: ["content"],
+    }),
     defineField({
       name: "isSeries",
       title: "Is this part of a series?",

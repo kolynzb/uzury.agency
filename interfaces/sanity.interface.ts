@@ -11,6 +11,8 @@ export interface SanityBaseSchema {
 export interface Image {
   _type: "image";
   asset: Reference;
+  caption:string;
+  alt:string;
 }
 export interface Reference {
   _ref: string;
@@ -89,6 +91,7 @@ url:string;
 
 export interface IClient extends  SanityDocument {
   _type: "client";
+  name: string;
 }
 
 export interface IService extends  SanityDocument {

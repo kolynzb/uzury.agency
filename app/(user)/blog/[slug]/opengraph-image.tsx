@@ -8,7 +8,7 @@ import { getPost } from "@/sanity/lib/api";
 
 export const runtime = "edge";
 export default async function og({ params }: { params: { slug: string } }) {
-  const font = fetch(new URL("@public/Inter-Bold.woff", import.meta.url)).then(
+  const font = fetch(new URL("@/public/Inter-Bold.woff", import.meta.url)).then(
     (res) => res.arrayBuffer()
   );
   const post = await getPost(params.slug);

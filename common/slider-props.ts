@@ -110,7 +110,7 @@ export const sliderProps = {
       },
     },
   },
-  milBoxSlider: {
+  milBoxSlider2: {
     slidesPerView: 1,
     spaceBetween: 30,
     speed: 800,

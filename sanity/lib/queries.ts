@@ -2,7 +2,7 @@ import { groq } from "next-sanity";
 import { defineQuery } from "next-sanity";
 
 /*
- * ------Groq FIELDS------
+ * ------GROQ FIELDS------
  */
 const categoryFields = groq`
     ...,
@@ -26,6 +26,27 @@ const postFields = groq`
     ${authorFields}
   },
   "mainImage": mainImage.asset->url,
+`;
+
+const serviceFields = groq`  
+
+`;
+const clientFields = groq`  
+
+`;
+const caseStudyFields = groq`
+ ...,
+  body,
+ "slug": slug.current,
+  categories[] ->{
+    ${categoryFields}
+  },
+  service ->{
+    ${serviceFields}
+  },
+  client ->{
+    ${serviceFields}
+  },
 `;
 
 /*
@@ -142,13 +163,13 @@ export const indexQuery = groq`
  */
 
 export const CASE_STUDIES_QUERY =
-    defineQuery(`*[_type == "caseStudy" && defined(slug.current)][0...12]{
-  _id, title, slug
+    defineQuery(`*[_type == "caseStudy" && defined(slug.current)]{
+    ${caseStudyFields}
 }`);
 
 export const CASE_STUDY_QUERY =
     defineQuery(`*[_type == "caseStudy" && slug.current == $slug][0]{
-  title, body, mainImage
+    ${caseStudyFields}
 }`);
 
 

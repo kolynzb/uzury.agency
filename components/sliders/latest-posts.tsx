@@ -1,14 +1,15 @@
 "use client";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { sliderProps } from "@/common/slider-props";
 import SectionData from "@/data/sliders/latest-posts.json";
+import {IPost} from "@/interfaces/sanity.interface";
+import cn from "classnames";
 
-const LatestThinking = ( {posts} ) => {
+const LatestThinking = ( {posts}:{posts:IPost[]} ) => {
 
-  const latestPosts = [];
+   let latestPosts: Array<IPost & {tempType: string ; classOne: string ;    classTwo: string }> = [];
 
-  posts.slice(0, SectionData.numOfItems).forEach((post, index) => {
+  posts.slice(0, 6).forEach((post, index) => {
     let s_class1 = 'mil-slide-25';
     let s_class2 = 'mil-card-sm mil-reverse-sm';
     let s_type = 'two';
@@ -22,8 +23,8 @@ const LatestThinking = ( {posts} ) => {
       s_class2 = 'mil-card-sm';
       s_type = 'three';
     }
-    let newobj = Object.assign({}, post, { "tempType": s_type, "classOne" :  s_class1, "classTwo": s_class2 });
-    latestPosts.push(newobj);
+    let newObj = Object.assign({}, post, { "tempType": s_type, "classOne" :  s_class1, "classTwo": s_class2 });
+    latestPosts.push(newObj);
   });
 
   return (
@@ -53,16 +54,34 @@ const LatestThinking = ( {posts} ) => {
           </div>
         </div>
         <Swiper
-          {...sliderProps.milBlogSlider}
+            spaceBetween={30}
+        speed={800}
+        slidesPerView={1}
+        navigation={{
+          prevEl: ".mil-blog-prev",
+          nextEl: ".mil-blog-next",
+        }}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+          },
+          992: {
+            slidesPerView: 2,
+          },
+          1200: {
+            slidesPerView: "auto",
+          }
+        } }
+
           className="swiper-container mil-blog-slider mil-mb-90"
         >
           {latestPosts.map((item, key) => (
-          <SwiperSlide key={key} className={`swiper-slide ${item.classOne}`}>
-            <Link href="publication" className={`mil-card ${item.classTwo}`}>
+          <SwiperSlide key={key} className={cn("swiper-slide",item.classOne)}>
+            <Link href={`/blog/${item.slug}`} className={cn("mil-card",item.classTwo)}>
               { item.tempType == 'one' &&
               <>
                 <div className="mil-cover-frame">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.mainImage} alt={item.title} />
                 </div>
                 <div className="mil-description">
                   <div className="mil-card-title">
@@ -70,12 +89,12 @@ const LatestThinking = ( {posts} ) => {
                       {item.title}
                     </h4>
                     <h6>
-                      by: <span className="mil-accent">{item.author}</span>
+                      by: <span className="mil-accent">{item.author.name}</span>
                     </h6>
                   </div>
                   <div className="mil-card-text">
                     <p>
-                      {item.short}
+                      {item.excerpt}
                     </p>
                   </div>
                 </div>
@@ -91,19 +110,19 @@ const LatestThinking = ( {posts} ) => {
                   </div>
                   <div className="mil-card-text">
                     <p>
-                      {item.short}
+                      {item.excerpt}
                     </p>
                   </div>
                 </div>
                 <div className="mil-cover-frame">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.mainImage} alt={item.title} />
                 </div>
               </>
               }
               { item.tempType == 'three' &&
               <>
                 <div className="mil-cover-frame">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.mainImage} alt={item.title} />
                 </div>
                 <div className="mil-description">
                   <div className="mil-card-title">
@@ -113,7 +132,7 @@ const LatestThinking = ( {posts} ) => {
                   </div>
                   <div className="mil-card-text">
                     <p>
-                      {item.short}
+                      {item.excerpt}
                     </p>
                   </div>
                 </div>

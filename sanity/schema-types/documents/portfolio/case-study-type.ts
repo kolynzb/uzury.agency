@@ -5,7 +5,7 @@ export default defineType({
   name: "caseStudy",
   title: "Case Study",
   type: "document",
-  icon: LuBriefcase,
+  icon:  LuBriefcase as any,
   groups: [
     { name: "content", title: "Content" },
     { name: "media", title: "Media" },
@@ -102,13 +102,13 @@ export default defineType({
       group: "metadata",
       of: [{ type: "reference", to: { type: "caseStudyCategory" } }],
     }),
-    // defineField({
-    //   name: "content",
-    //   title: "Detailed Content",
-    //   type: "blockContent",
-    //   group: "content",
-    //   description: "The main body content of the case study.",
-    // }),
+    defineField({
+      name: "content",
+      title: "Detailed Content",
+      type: "blockContent",
+      group: "content",
+      description: "The main body content of the case study.",
+    }),
     defineField({
       name: "tags",
       title: "Tags",

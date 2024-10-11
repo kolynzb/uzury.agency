@@ -46,12 +46,12 @@ export const blockContentType = defineType({
           { title: "Underline", value: "underline" },
           { title: "Strike", value: "strike-through" },
           { title: "Code", value: "code" },
-          {
-            title: "Highlight",
-            value: "highlight",
-            icon: LuHighlighter,
-            component: HighlightDecorator,
-          },
+          // {
+          //   title: "Highlight",
+          //   value: "highlight",
+          //   icon: LuHighlighter as any,
+          //   component: HighlightDecorator,
+          // },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -73,64 +73,61 @@ export const blockContentType = defineType({
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-    defineArrayMember({
-      type: 'image',
-      icon: ImageIcon,
-      options: {
-        hotspot: true,
-        metadata: [
-          "blurhash", // Default: included
-          "lqip", // Default: included
-          "palette", // Default: included
-          "exif", // Default: not included
-          "location", // Default: not included
-        ],
-        captionField: "caption",
-      },
-      fields: [
-        {
-          name: "caption",
-          type: "string",
-          title: "Image caption",
-          description: "Caption displayed below the image.",
-        },
-        {
-          name: "attribution",
-          type: "string",
-          title: "Attribution",
-        },
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-          description: "Important for SEO and accessibility.",
-        },
-      ],
-    }),
-    defineArrayMember({
-      type: "code",
-      title: "Code Block",
-      icon: FaCode,
-      options: {
-        withFilename: true,
-      },
-    }),
-    defineArrayMember({
-      type: "youtube",
-    }),
-    defineArrayMember({
-      type: "quote",
-    }),
-    defineArrayMember({
-      type: "gallery",
-    }),
-    defineArrayMember({
-      type: "iframeEmbed",
-    }),
-    defineArrayMember({
-      type: "table",
-      icon: LuTable2,
-    }),
-    defineArrayMember({ type: "break" }),
+  //   defineArrayMember({
+  //     type: 'image',
+  //     icon: ImageIcon,
+  //     options: {
+  //       hotspot: true,
+  //       metadata: [
+  //         "blurhash", // Default: included
+  //         "lqip", // Default: included
+  //         "palette", // Default: included
+  //         "exif", // Default: not included
+  //         "location", // Default: not included
+  //       ],
+  //       captionField: "caption",
+  //     },
+  //     fields: [
+  //       {
+  //         name: "caption",
+  //         type: "string",
+  //         title: "Image caption",
+  //         description: "Caption displayed below the image.",
+  //       },
+  //       {
+  //         name: "alt",
+  //         type: "string",
+  //         title: "Alternative text",
+  //         description: "Important for SEO and accessibility.",
+  //       },
+  //     ],
+  //   }),
+  //   defineArrayMember({
+  //     type: "code",
+  //     title: "Code Block",
+  //     icon: FaCode as any,
+  //     options: {
+  //       withFilename: true,
+  //     },
+  //   }),
+  //   defineArrayMember({
+  //     type: "youtube",
+  //   }),
+  //   defineArrayMember({
+  //     type: "quote",
+  //   }),
+  //   defineArrayMember({
+  //     type: "gallery",
+  //   }),
+  //   defineArrayMember({
+  //     type: "iframeEmbed",
+  //   }),
+  //   defineArrayMember({
+  //     type: "table",
+  //     icon: LuTable2 as any,
+  //   }),
+  //   defineArrayMember({ type: "break" }),
   ],
 })
+
+//https://www.sanity.io/guides/align-text-with-block-content

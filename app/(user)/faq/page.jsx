@@ -1,6 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import PageBanner from "@/components/PageBanner";
-import Layouts from "@/layouts/Index";
+import Layouts from "@/layouts/";
 const Faq = () => {
   return (
     <Layouts>
