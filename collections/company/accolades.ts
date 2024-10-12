@@ -1,4 +1,4 @@
-import { COLLECTION_SLUG_ACCOLADE } from '@/constants/slugs';
+import { COLLECTION_SLUG_ACCOLADE, COLLECTION_SLUG_MEDIA } from '@/constants/slugs';
 import { CollectionConfig } from 'payload';
 
 const Accolades: CollectionConfig = {
@@ -33,7 +33,7 @@ const Accolades: CollectionConfig = {
         {
           name: 'image',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: COLLECTION_SLUG_MEDIA,
           required: true,
         },
       ],

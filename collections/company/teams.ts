@@ -27,7 +27,7 @@ const TeamMember: CollectionConfig = {
     {
       name: 'image',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: COLLECTION_SLUG_MEDIA,
       label: 'Image',
     },
     {
@@ -56,18 +56,7 @@ const TeamMember: CollectionConfig = {
           label: 'URL',
         },
       ],
-    },
-    {
-      name: 'seoDescription',
-      type: 'textarea',
-      label: 'SEO Description',
-      validate: (value) => {
-        if (value && value.length > 160) {
-          return 'SEO Description must be 160 characters or less';
-        }
-        return true;
-      },
-    },
+    }
   ],
 };
 

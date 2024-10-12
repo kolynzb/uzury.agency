@@ -6,7 +6,6 @@ const Faqs: CollectionConfig = {
   admin: {
     useAsTitle: 'question',
     defaultColumns: ['question', 'category', 'isFeatured'],
-    // Payload doesn't have a direct equivalent to Sanity's icon, but you can use a custom icon component if needed
   },
   fields: [
     {
@@ -30,18 +29,7 @@ const Faqs: CollectionConfig = {
       name: 'isFeatured',
       type: 'checkbox',
       label: 'Featured FAQ',
-    },
-    {
-      name: 'seoDescription',
-      type: 'textarea',
-      label: 'SEO Description',
-      validate: (value) => {
-        if (value && value.length > 160) {
-          return 'SEO Description must be 160 characters or less';
-        }
-        return true;
-      },
-    },
+    }
   ],
 };
 

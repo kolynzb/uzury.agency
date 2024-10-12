@@ -46,17 +46,6 @@ const CareerCollection: CollectionConfig = {
       type: 'text',
       label: 'Application URL',
     },
-    {
-      name: 'seoDescription',
-      type: 'textarea',
-      label: 'SEO Description',
-      validate: (value) => {
-        if (value && value.length > 160) {
-          return 'SEO Description must be 160 characters or less';
-        }
-        return true;
-      },
-    },
   ],
 };
 

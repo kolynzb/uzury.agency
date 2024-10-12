@@ -1,4 +1,4 @@
-import { COLLECTION_SLUG_SERVICE } from "@/constants/slugs";
+import { COLLECTION_SLUG_MEDIA, COLLECTION_SLUG_SERVICE } from "@/constants/slugs";
 import { CollectionConfig } from "payload";
 
 export const Services: CollectionConfig = {
@@ -31,13 +31,13 @@ export const Services: CollectionConfig = {
     {
       name: 'icon',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: COLLECTION_SLUG_MEDIA,
       label: 'Icon',
     },
     {
       name: 'mainImage',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: COLLECTION_SLUG_MEDIA,
       label: 'Main Image',
     },
     {
@@ -50,18 +50,7 @@ export const Services: CollectionConfig = {
           type: 'text',
         },
       ],
-    },
-    {
-      name: 'seoDescription',
-      type: 'textarea',
-      label: 'SEO Description',
-      validate: (value) => {
-        if (value && value.length > 160) {
-          return 'SEO Description must be 160 characters or less';
-        }
-        return true;
-      },
-    },
+    }
   ],
 };
 

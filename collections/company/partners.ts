@@ -1,4 +1,4 @@
-import { COLLECTION_SLUG_PARTNER } from '@/constants/slugs';
+import { COLLECTION_SLUG_MEDIA, COLLECTION_SLUG_PARTNER } from '@/constants/slugs';
 import { CollectionConfig } from 'payload';
 
 const Partners: CollectionConfig = {
@@ -29,7 +29,7 @@ const Partners: CollectionConfig = {
     {
       name: 'logo',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: COLLECTION_SLUG_MEDIA,
       required: true,
       admin: {
         description: 'Logo of the partner company.',
@@ -47,14 +47,6 @@ const Partners: CollectionConfig = {
       type: 'text',
       admin: {
         description: 'The official website URL of the partner company.',
-      },
-    },
-    {
-      name: 'seoDescription',
-      type: 'textarea',
-      maxLength: 160,
-      admin: {
-        description: 'Used for search engines. Keep it within 160 characters.',
       },
     },
   ],

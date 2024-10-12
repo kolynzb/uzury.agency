@@ -1,4 +1,5 @@
 import { COLLECTION_SLUG_EVENT } from '@/constants/slugs';
+import { slugField } from '@/payload/fields/slug';
 import { CollectionConfig } from 'payload';
 
 const Event: CollectionConfig = {
@@ -14,15 +15,7 @@ const Event: CollectionConfig = {
       required: true,
       label: 'Title',
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
+    ...slugField(),
     {
       name: 'date',
       type: 'date',
@@ -49,17 +42,6 @@ const Event: CollectionConfig = {
       name: 'url',
       type: 'text',
       label: 'Registration URL',
-    },
-    {
-      name: 'seoDescription',
-      type: 'textarea',
-      label: 'SEO Description',
-      validate: (value) => {
-        if (value && value.length > 160) {
-          return 'SEO Description must be 160 characters or less';
-        }
-        return true;
-      },
     },
   ],
 };
