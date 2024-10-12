@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Layout from "../../layouts";
 import dynamic from "next/dynamic";
@@ -18,9 +19,9 @@ const LatestPostsSlider = dynamic(() => import("../../components/sliders/latest-
 const HeroSlideshowSlider = dynamic(() => import("../../components/sliders/hero-slideshow"), { ssr: false });
 const TestimonialSlider = dynamic(() => import("../../components/sliders/testimonial"), { ssr: false });
 
-const Home1 = async () => {
-  const posts = await getFeaturedPosts();
-  const caseStudies = getFeaturedCaseStudies();
+const Home1 =  () => {
+  // const posts = await getFeaturedPosts();
+  // const caseStudies = getFeaturedCaseStudies();
   return (
     <Layout transparent>
       <HeroSlideshowSlider />

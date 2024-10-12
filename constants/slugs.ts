@@ -1,0 +1,19 @@
+export const COLLECTION_SLUG_POST = 'posts' as const;
+export const COLLECTION_SLUG_BLOG_CATEGORY = 'blog-categories' as const;
+export const COLLECTION_SLUG_CASE_STUDY = 'case-studies' as const;
+export const COLLECTION_SLUG_CASE_STUDY_CATEGORY =
+  'case-study-categories' as const;
+  export const COLLECTION_SLUG_PAGE = 'pages' as const;
+  export const COLLECTION_SLUG_FEEDBACK_CATEGORY = 'feedback-categories' as const;
+  export const COLLECTION_SLUG_FEEDBACK_COMMENT = 'feedback-categories' as const;
+  export const COLLECTION_SLUG_FEEDBACK = 'feedback' as const;
+  export const COLLECTION_SLUG_MEDIA = 'media' as const
+  export const COLLECTION_SLUG_USER = 'users' as const;
+  export const COLLECTION_SLUG_CLIENT = 'clients' as const;
+  export const COLLECTION_SLUG_SERVICE = 'services' as const;
+  export const COLLECTION_SLUG_ACCOLADE = 'accolades' as const;
+  export const COLLECTION_SLUG_CAREER = 'careers' as const;
+  export const COLLECTION_SLUG_EVENT = 'events' as const;
+  export const COLLECTION_SLUG_FAQ = 'faqs' as const;
+  export const COLLECTION_SLUG_PARTNER = 'partners' as const;
+export const COLLECTION_SLUG_TEAM_MEMBER = 'team-members' as const;
