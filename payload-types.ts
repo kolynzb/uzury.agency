@@ -17,9 +17,20 @@ export interface Config {
     posts: Post;
     'blog-categories': BlogCategory;
     'case-studies': CaseStudy;
-    'portfolio-categories': PortfolioCategory;
+    'case-study-categories': CaseStudyCategory;
+    testimonials: Testimonial;
+    clients: Client;
+    'team-members': TeamMember;
+    accolades: Accolade;
+    events: Event;
+    faqs: Faq;
+    careers: Career;
+    partners: Partner;
+    services: Service;
     redirects: Redirect;
     search: Search;
+    forms: Form;
+    'form-submissions': FormSubmission;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -171,21 +182,7 @@ export interface MediaBlock {
 export interface Media {
   id: string;
   alt: string;
-  caption?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  caption?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -206,6 +203,8 @@ export interface User {
   id: string;
   name?: string | null;
   website?: string | null;
+  avatar?: (string | null) | Media;
+  designation?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -234,6 +233,7 @@ export interface Post {
     | null;
   authors?: (string | User)[] | null;
   category?: (string | null) | BlogCategory;
+  readTime?: number | null;
   featuredImage: string | Media;
   content: {
     root: {
@@ -251,7 +251,7 @@ export interface Post {
     [k: string]: unknown;
   };
   relatedPosts?: (string | Post)[] | null;
-  'blog-categories'?: (string | BlogCategory)[] | null;
+  categories?: (string | BlogCategory)[] | null;
   meta?: {
     title?: string | null;
     image?: (string | null) | Media;
@@ -265,6 +265,7 @@ export interface Post {
     | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -276,6 +277,9 @@ export interface Post {
 export interface BlogCategory {
   id: string;
   title: string;
+  description: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
   parent?: (string | null) | BlogCategory;
   breadcrumbs?:
     | {
@@ -295,8 +299,33 @@ export interface BlogCategory {
 export interface CaseStudy {
   id: string;
   title: string;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  client: string | Client;
+  service?: (string | null) | Service;
+  industry?: string | null;
+  isFeatured?: boolean | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   excerpt: string;
-  'portfolio-categories'?: (string | PortfolioCategory)[] | null;
+  category?: (string | CaseStudyCategory)[] | null;
   featuredImage: string | Media;
   publishedAt?: string | null;
   slug?: string | null;
@@ -307,11 +336,167 @@ export interface CaseStudy {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "portfolio-categories".
+ * via the `definition` "clients".
  */
-export interface PortfolioCategory {
+export interface Client {
+  id: string;
+  name: string;
+  description?: string | null;
+  logo?: (string | null) | Media;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  title: string;
+  slug: string;
+  description?: string | null;
+  icon?: (string | null) | Media;
+  mainImage?: (string | null) | Media;
+  features?:
+    | {
+        feature?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-study-categories".
+ */
+export interface CaseStudyCategory {
   id: string;
   title?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  name: string;
+  role?: string | null;
+  testimonial?: string | null;
+  client?: (string | null) | Client;
+  image?: (string | null) | Media;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members".
+ */
+export interface TeamMember {
+  id: string;
+  name: string;
+  role?: string | null;
+  bio?: string | null;
+  image?: (string | null) | Media;
+  user?: (string | null) | User;
+  socials?:
+    | {
+        platform?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accolades".
+ */
+export interface Accolade {
+  id: string;
+  title: string;
+  date: string;
+  description?: string | null;
+  images?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  url?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: string;
+  title: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  date: string;
+  location?: string | null;
+  description?: string | null;
+  image?: (string | null) | Media;
+  url?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: string;
+  question: string;
+  answer: string;
+  category?: string | null;
+  isFeatured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "careers".
+ */
+export interface Career {
+  id: string;
+  position: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  department?: string | null;
+  description?: string | null;
+  requirements?:
+    | {
+        requirement?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  location?: string | null;
+  applicationUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: string;
+  name: string;
+  slug: string;
+  logo: string | Media;
+  description?: string | null;
+  url?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -360,6 +545,187 @@ export interface Search {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "forms".
+ */
+export interface Form {
+  id: string;
+  title: string;
+  fields?:
+    | (
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            defaultValue?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'checkbox';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'country';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'email';
+          }
+        | {
+            message?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'message';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'number';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            options?:
+              | {
+                  label: string;
+                  value: string;
+                  id?: string | null;
+                }[]
+              | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'select';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'state';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'text';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textarea';
+          }
+      )[]
+    | null;
+  submitButtonLabel?: string | null;
+  confirmationType?: ('message' | 'redirect') | null;
+  confirmationMessage?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  redirect?: {
+    url: string;
+  };
+  emails?:
+    | {
+        emailTo?: string | null;
+        cc?: string | null;
+        bcc?: string | null;
+        replyTo?: string | null;
+        emailFrom?: string | null;
+        subject: string;
+        message?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "form-submissions".
+ */
+export interface FormSubmission {
+  id: string;
+  form: string | Form;
+  submissionData?:
+    | {
+        field: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -390,8 +756,44 @@ export interface PayloadLockedDocument {
         value: string | CaseStudy;
       } | null)
     | ({
-        relationTo: 'portfolio-categories';
-        value: string | PortfolioCategory;
+        relationTo: 'case-study-categories';
+        value: string | CaseStudyCategory;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'clients';
+        value: string | Client;
+      } | null)
+    | ({
+        relationTo: 'team-members';
+        value: string | TeamMember;
+      } | null)
+    | ({
+        relationTo: 'accolades';
+        value: string | Accolade;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: string | Event;
+      } | null)
+    | ({
+        relationTo: 'faqs';
+        value: string | Faq;
+      } | null)
+    | ({
+        relationTo: 'careers';
+        value: string | Career;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: string | Partner;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -400,6 +802,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: string | Search;
+      } | null)
+    | ({
+        relationTo: 'forms';
+        value: string | Form;
+      } | null)
+    | ({
+        relationTo: 'form-submissions';
+        value: string | FormSubmission;
       } | null);
   globalSlug?: string | null;
   user: {

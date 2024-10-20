@@ -1,7 +1,7 @@
 import React from 'react'
 import RichText from '../../components/rich-text'
 import cn from "classnames"
-import type { Post } from '../../payload-types'
+import type { Post } from '@/payload-types'
 import { Card } from '../../components/card'
 
 

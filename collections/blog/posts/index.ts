@@ -1,84 +1,93 @@
-import { Alert } from '@/payload/blocks/alert/config';
-import { Content } from '@/payload/blocks/content/config';
-import { Quote } from '@/payload/blocks/quote/config';
-import { slugField } from '@/payload/fields/slug';
-import type { CollectionConfig } from 'payload';
+import { Alert } from "@/payload/blocks/alert/config";
+import { Content } from "@/payload/blocks/content/config";
+import { Quote } from "@/payload/blocks/quote/config";
+import { slugField } from "@/payload/fields/slug";
+import type { CollectionConfig } from "payload";
 import {
   FixedToolbarFeature,
   HeadingFeature,
   HorizontalRuleFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical';
-import { BlocksFeature } from '@payloadcms/richtext-lexical';
-import { MediaBlock } from '@/payload/blocks/media-block/config';
-import { Code } from '@/payload/blocks/code/config';
-import { Banner } from '@/payload/blocks/banner/config';
-import { revalidatePost } from './hooks/revalidate-post';
-import { populateAuthors } from './hooks/populate-authors';
-import { COLLECTION_SLUG_USER, COLLECTION_SLUG_BLOG_CATEGORY,COLLECTION_SLUG_MEDIA,COLLECTION_SLUG_POST} from '@/constants/slugs';
-import { generatePreviewPath } from '@/payload/utils/generate-preview-path';
+} from "@payloadcms/richtext-lexical";
+import { BlocksFeature } from "@payloadcms/richtext-lexical";
+import { MediaBlock } from "@/payload/blocks/media-block/config";
+import { Code } from "@/payload/blocks/code/config";
+import { Banner } from "@/payload/blocks/banner/config";
+import { revalidatePost } from "./hooks/revalidate-post";
+import { populateAuthors } from "./hooks/populate-authors";
+import {
+  COLLECTION_SLUG_USER,
+  COLLECTION_SLUG_BLOG_CATEGORY,
+  COLLECTION_SLUG_MEDIA,
+  COLLECTION_SLUG_POST,
+} from "@/constants/slugs";
+import { generatePreviewPath } from "@/payload/utils/generate-preview-path";
 import {
   MetaDescriptionField,
   MetaImageField,
   MetaTitleField,
   OverviewField,
   PreviewField,
-} from '@payloadcms/plugin-seo/fields';
-
+} from "@payloadcms/plugin-seo/fields";
 
 export const Posts: CollectionConfig = {
   slug: COLLECTION_SLUG_POST,
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
-    useAsTitle: 'title',
-    group:"Blog",
+    // TODO: ADD IMAGE ON LIST ITEM
+    defaultColumns: ["featuredImage", "title","_status", "slug","updatedAt"],
+    useAsTitle: "title",
+    group: "Blog",
     livePreview: {
       url: ({ data }) => {
         const path = generatePreviewPath({
-          path: `/posts/${typeof data?.slug === 'string' ? data.slug : ''}`,
+          path: `/blog/${typeof data?.slug === "string" ? data.slug : ""}`,
         });
         return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`;
       },
     },
     preview: (doc) =>
       generatePreviewPath({
-        path: `/posts/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+        path: `/blog/${typeof doc?.slug === "string" ? doc.slug : ""}`,
       }),
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
+        description:
+          "This is the main title of your post. Keep it concise and catchy.",
       },
     },
     {
-      name: 'excerpt',
-      type: 'textarea',
+      name: "excerpt",
+      type: "textarea",
       required: true,
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
+        description:
+          "A short summary of the post (Max 160 characters) used for SEO and previews.",
       },
       minLength: 40,
       maxLength: 160,
     },
 
     {
-      name: 'publishedAt',
-      type: 'date',
+      name: "publishedAt",
+      type: "date",
       admin: {
         date: {
-          pickerAppearance: 'dayAndTime',
+          pickerAppearance: "dayAndTime",
         },
-        position: 'sidebar',
+        position: "sidebar",
       },
       hooks: {
         beforeChange: [
           ({ siblingData, value }) => {
-            if (siblingData._status === 'published' && !value) {
+            if (siblingData._status === "published" && !value) {
               return new Date();
             }
             return value;
@@ -87,32 +96,55 @@ export const Posts: CollectionConfig = {
       },
     },
     {
-      name: 'tags',
-      type: 'array',
+      name: "tags",
+      type: "array",
       fields: [
         {
-          name: 'tag',
-          type: 'text',
+          name: "tag",
+          type: "text",
           required: true,
         },
       ],
-      required: false,
     },
     {
-      name: 'authors',
-      type: 'relationship',
+      name: "authors",
+      type: "relationship",
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
       },
       hasMany: true,
       relationTo: COLLECTION_SLUG_USER,
     },
     {
-      name: 'category',
-      type: 'relationship',
+      name: "category",
+      type: "relationship",
       relationTo: COLLECTION_SLUG_BLOG_CATEGORY,
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
+        description: "Organize posts into categories for better navigation.",
+      },
+    },
+    {
+      name: "readTime",
+      type: "number",
+      admin: {
+        position: "sidebar",
+        description: "Time Spent Reading the post in Minutes",
+      },
+      access: {
+        read: () => true,
+      },
+      hooks: {
+        afterChange: [
+          ({ data }) => {
+            const wordsPerMinute = 200;
+            const wordCount = data?.content
+              ? data?.content.split(/\s+/).length
+              : 0;
+            const readTime = Math.ceil(wordCount / wordsPerMinute);
+            return readTime;
+          },
+        ],
       },
     },
     // {
@@ -125,34 +157,38 @@ export const Posts: CollectionConfig = {
     //   }
     // },
     {
-      type: 'tabs',
+      type: "tabs",
       tabs: [
         {
-          label: 'Post Media',
+          label: "Post Media",
           fields: [
             {
-              name: 'featuredImage',
-              type: 'upload',
+              name: "featuredImage",
+              type: "upload",
+              admin: {
+                description:
+                  "This image will appear in post listings. Aim for a 16:9 ratio.",
+              },
               relationTo: COLLECTION_SLUG_MEDIA,
               required: true,
               filterOptions: {
-                mimeType: { contains: 'image' },
+                mimeType: { contains: "image" },
               },
             },
           ],
         },
         {
-          label: 'Content',
+          label: "Content",
           fields: [
             {
-              name: 'content',
-              type: 'richText',
+              name: "content",
+              type: "richText",
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => {
                   return [
                     ...rootFeatures,
                     HeadingFeature({
-                      enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'],
+                      enabledHeadingSizes: ["h1", "h2", "h3", "h4"],
                     }),
                     BlocksFeature({
                       blocks: [Banner, Code, MediaBlock, Quote, Content, Alert],
@@ -171,10 +207,10 @@ export const Posts: CollectionConfig = {
         {
           fields: [
             {
-              name: 'relatedPosts',
-              type: 'relationship',
+              name: "relatedPosts",
+              type: "relationship",
               admin: {
-                position: 'sidebar',
+                position: "sidebar",
               },
               filterOptions: ({ id }) => {
                 return {
@@ -187,31 +223,31 @@ export const Posts: CollectionConfig = {
               relationTo: COLLECTION_SLUG_POST,
             },
             {
-              name: COLLECTION_SLUG_BLOG_CATEGORY,
-              type: 'relationship',
+              name: "categories",
+              type: "relationship",
               admin: {
-                position: 'sidebar',
+                position: "sidebar",
               },
               hasMany: true,
               relationTo: COLLECTION_SLUG_BLOG_CATEGORY,
             },
           ],
-          label: 'Meta',
+          label: "Meta",
         },
         {
-          name: 'meta',
-          label: 'SEO',
+          name: "meta",
+          label: "SEO",
           fields: [
             OverviewField({
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-              imagePath: 'meta.image',
+              titlePath: "meta.title",
+              descriptionPath: "meta.description",
+              imagePath: "meta.image",
             }),
             MetaTitleField({
               hasGenerateFn: true,
             }),
             MetaImageField({
-              relationTo: 'media',
+              relationTo: "media",
             }),
 
             MetaDescriptionField({}),
@@ -220,16 +256,16 @@ export const Posts: CollectionConfig = {
               hasGenerateFn: true,
 
               // field paths to match the target field for data
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
+              titlePath: "meta.title",
+              descriptionPath: "meta.description",
             }),
           ],
         },
       ],
     },
     {
-      name: 'populatedAuthors',
-      type: 'array',
+      name: "populatedAuthors",
+      type: "array",
       access: {
         update: () => false,
       },
@@ -239,17 +275,26 @@ export const Posts: CollectionConfig = {
       },
       fields: [
         {
-          name: 'id',
-          type: 'text',
+          name: "id",
+          type: "text",
         },
         {
-          name: 'name',
-          type: 'text',
+          name: "name",
+          type: "text",
         },
       ],
     },
 
     ...slugField(),
+    {
+      name: "featured",
+      type: "checkbox",
+      defaultValue: false,
+      admin: {
+        position: "sidebar",
+        description: "Tick this box if you want the post to be featured.",
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidatePost],

@@ -1,11 +1,30 @@
 import Link from "next/link";
-import {getAllTags, getCategories, getFeaturedPosts} from "@/sanity/lib/api";
+import { getPayloadHMR } from "@payloadcms/next/utilities";
 import Image from "next/image";
+import configPromise from '@payload-config'
+import { COLLECTION_SLUG_BLOG_CATEGORY, COLLECTION_SLUG_POST } from "@/constants/slugs";
 
 const BlogSideBar = async ()=> {
-  const categories = await getCategories();
-  const posts = await getFeaturedPosts();
-  const tags = await getAllTags();
+    const payload = await getPayloadHMR({ config: configPromise })
+
+  const categories = await payload.find({
+    collection: COLLECTION_SLUG_BLOG_CATEGORY,
+  });
+
+  const posts = await payload.find({
+    collection: COLLECTION_SLUG_POST,
+    where: {
+      featured: { equals: true },
+    },
+    limit: 3,
+  });
+
+  const tagsResult = await payload.find({
+    collection: COLLECTION_SLUG_POST,
+    limit: 0,
+  });
+  const tags = [...new Set(tagsResult.docs.flatMap(post => post.tags || []))].slice(0, 6);
+
     return (
     <aside className="col-lg-4 col-xl-3 mil-mb-120">
         <div className="mil-mb-60">
@@ -39,12 +58,12 @@ const BlogSideBar = async ()=> {
         <div className="mil-mb-60">
             <h5 className="mil-list-title mil-mb-30">Recent Posts</h5>
             {/* 4 posts */}
-            {posts.slice(0,3).map(post => (
-                <Link key={post._id} href={`/blog/${post.slug}`} className="mil-post-sm mil-mb-15">
+            {posts.docs.slice(0,3).map(post => (
+                <Link key={post.id} href={`/blog/${post.slug}`} className="mil-post-sm mil-mb-15">
                     <div className="mil-cover-frame">
                         <Image
-                            src={post.mainImage}
-                            alt={post.title}
+                            src={(post.featuredImage as Media).url!}
+                            alt={(post.featuredImage as Media).alt!}
                             height={667}
                             width={1000}
                             priority={true}
@@ -62,8 +81,8 @@ const BlogSideBar = async ()=> {
             <ul className="mil-hover-link-list">
                 {/*5 categories*/}
                 {
-                    categories.slice(0,4).map(category => (
-                        <li key={category._id}>
+                    categories.docs.slice(0,4).map(category => (
+                        <li key={category.id}>
                             <Link href={`/blog/category/${category.slug}`}>{category.title}</Link>
                         </li>
                     ))
@@ -74,7 +93,7 @@ const BlogSideBar = async ()=> {
         <div className="mil-mb-60">
             <h5 className="mil-list-title mil-mb-30">Tags</h5>
             <ul className="mil-tags">
-                {tags.slice(0, 6).map(tag=>(
+                {tags.slice(0, 6).map(({tag})=>(
                     <li key={tag}>
                     <a href="#.">{tag}</a>
                     </li>

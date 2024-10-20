@@ -1,0 +1,50 @@
+@import '~@payloadcms/ui/scss';
+
+.dashboard .before-dashboard {
+  margin-bottom: base(1.5);
+
+  &__content {
+    padding: 20px;
+    text-align: center;
+  }
+
+  &__banner {
+    margin-bottom: 20px;
+  }
+
+  &__joke {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__setup {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__punchline {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #4a4a4a;
+  }
+
+  &__quote {
+    margin-top: 30px;
+    font-style: italic;
+    color: #666;
+  }
+
+  &__quote-text {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+
+  &__quote-author {
+    font-size: 0.9em;
+    text-align: right;
+  }
+}

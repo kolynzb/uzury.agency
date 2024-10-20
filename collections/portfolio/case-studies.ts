@@ -78,7 +78,7 @@ export const CaseStudies: CollectionConfig = {
       maxLength: 160,
     },
     {
-      name: COLLECTION_SLUG_CASE_STUDY_CATEGORY,
+      name: "category",
       admin: {
         position: 'sidebar',
       },

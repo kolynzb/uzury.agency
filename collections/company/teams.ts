@@ -1,10 +1,11 @@
-import { COLLECTION_SLUG_TEAM_MEMBER, COLLECTION_SLUG_USER } from '@/constants/slugs';
+import { COLLECTION_SLUG_MEDIA, COLLECTION_SLUG_TEAM_MEMBER, COLLECTION_SLUG_USER } from '@/constants/slugs';
 import { CollectionConfig } from 'payload';
 
 const TeamMember: CollectionConfig = {
   slug: COLLECTION_SLUG_TEAM_MEMBER,
   admin: {
     useAsTitle: 'name',
+    group: 'Company',
     defaultColumns: ['name', 'role'],
   },
   fields: [

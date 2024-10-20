@@ -1,7 +1,7 @@
 import cn  from 'classnames'
 import React, { Fragment } from 'react'
 
-import type { Page } from '../payload-types'
+import type { Page } from '@/payload-types'
 
 // import { ArchiveBlock } from '@/blocks/ArchiveBlock/component'
 import { CallToActionBlock } from './cta/component'
@@ -31,7 +31,7 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType] as any
 
             if (Block) {
               return (

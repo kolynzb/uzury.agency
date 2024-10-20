@@ -1,47 +1,50 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
 
 import {
   FixedToolbarFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical';
-import path from 'path'
-import { COLLECTION_SLUG_MEDIA } from '@/constants/slugs';
-import {fileURLToPath} from "url";
+} from "@payloadcms/richtext-lexical";
+import path from "path";
+import { COLLECTION_SLUG_MEDIA } from "@/constants/slugs";
+import { fileURLToPath } from "url";
 
-
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export const Media: CollectionConfig = {
-  access: {
-    create: () => false,
-    delete: () => false,
-    read: () => true,
-    update: () => false,
-  },
   admin: {
-    description: 'Creating, updating, and deleting media is disabled for this demo.',
+    description: "Create, update, and delete media.",
   },
   fields: [
     {
-      name: 'alt',
+      name: "alt",
       required: true,
-      type: 'text',
+      type: "text",
+      admin: {
+        description:
+          "An alternative text for folks with screen readers. Describe what is in the image",
+      },
     },
     {
-      name: 'caption',
- 
-      type: 'richText',
+      name: "caption",
+      admin: {
+        description: "A caption that sits below the image for context",
+      },
+      type: "richText",
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
-          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+          return [
+            ...rootFeatures,
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ];
         },
       }),
     },
   ],
   slug: COLLECTION_SLUG_MEDIA,
   upload: {
-    staticDir: path.resolve(dirname, '../media'),
+    staticDir: path.resolve(dirname, "../media"),
   },
-}
+};

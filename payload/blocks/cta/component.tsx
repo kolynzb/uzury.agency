@@ -1,7 +1,7 @@
 import React from 'react'
 import RichText from '../../components/rich-text'
 
-import type { Page } from '../../payload-types'
+import type { Page } from '../../../payload-types'
 
 import { CMSLink } from '../../components/link'
 

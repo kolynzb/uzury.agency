@@ -5,7 +5,7 @@ import { MediaBlock } from '../../blocks/media-block/component'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '../link'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
-import type { BannerBlock as BannerBlockProps, Page} from '../../payload-types'
+import type { BannerBlock as BannerBlockProps, Page} from '@/payload-types'
 
 import {
   IS_BOLD,

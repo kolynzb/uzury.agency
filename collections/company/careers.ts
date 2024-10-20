@@ -6,6 +6,7 @@ const CareerCollection: CollectionConfig = {
   slug: COLLECTION_SLUG_CAREER,
   admin: {
     useAsTitle: 'position',
+    group: 'Company',
   },
   fields: [
     {

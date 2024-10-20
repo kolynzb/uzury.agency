@@ -5,6 +5,7 @@ const Partners: CollectionConfig = {
   slug: COLLECTION_SLUG_PARTNER,
   admin: {
     useAsTitle: 'name',
+    group: 'Company',
     defaultColumns: ['name', 'url'],
     // Payload doesn't have a direct equivalent to Sanity's icon, but you can use a custom icon in the admin UI if needed
   },

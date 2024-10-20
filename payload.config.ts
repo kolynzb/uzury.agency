@@ -17,6 +17,7 @@ import { Users } from './collections/users'
 import { Pages } from './collections/page'
 import { Media } from './collections/media'
 import {seoPlugin} from "@payloadcms/plugin-seo";
+import {formBuilderPlugin} from "@payloadcms/plugin-form-builder";
 import {GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import { Page,Post } from './payload-types';
 import { Posts } from './collections/blog/posts';
@@ -28,16 +29,25 @@ import {payloadCloudPlugin} from "@payloadcms/plugin-cloud";
 import {redirectsPlugin} from "@payloadcms/plugin-redirects";
 import {revalidateRedirects} from "@/payload/hooks/revalidate-redirect";
 import {searchPlugin} from "@payloadcms/plugin-search";
-import Logo from "@/components/cms-logo"
 import {CaseStudies} from "@/collections/portfolio/case-studies";
 import {CaseStudyCategories} from "@/collections/portfolio/categories";
+import Teams from './collections/company/teams'
+import Accolades from './collections/company/accolades'
+import Events from './collections/company/events'
+import Faqs from './collections/company/faqs'
+import Careers from './collections/company/careers'
+import Partners from './collections/company/partners'
+import { Services } from './collections/company/services'
+import { Testimonials } from './collections/portfolio/testimonials'
+import  {Clients}  from '@/collections/portfolio/clients'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title
-      ? `${doc.title} | Payload Website Template`
-      : 'Payload Website Template';
+      ? `${doc.title} | Uzury CMS`
+      : 'Uzury CMS';
 };
 
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
@@ -56,28 +66,30 @@ export default buildConfig({
       icons: [
         {
           rel: 'apple-touch-icon',
-          url: '/favicon/apple-touch-icon.png',
+          url: '/favicon/studio/apple-touch-icon.png',
         },
         {
           rel: 'mask-icon',
-          url: '/favicon/safari-pinned-tab.svg',
+          url: '/favicon/studio/safari-pinned-tab.svg',
         },
         {
           rel: 'icon',
-          url: '/favicon/favicon-32x32.png',
+          url: '/favicon/studio/favicon-32x32.png',
         },
         {
           rel: 'icon',
-          url: '/favicon/favicon-16x16.png',
+          url: '/favicon/studio/favicon-16x16.png',
         },
       ],
       // ogImage: "",
-      titleSuffix: '| Funzana',
+      titleSuffix: '| Uzury CMS',
     },
     components: {
     // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
     // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
     beforeLogin: ['./payload/components/before-login'],
+    beforeDashboard: ['./payload/components/before-dashboard'],
+
     graphics: {
       Logo : "./components/cms-logo",
       Icon:  "./components/cms-logo",
@@ -110,9 +122,10 @@ export default buildConfig({
       Pages,Users, Media,
     // Blog
     Posts,PostCategories,
-  //     Case Study
-    CaseStudies,
-    CaseStudyCategories
+    // Portfolio
+    CaseStudies,CaseStudyCategories,Testimonials,Clients,
+    // Company
+    Teams,Accolades,Events,Faqs,Careers,Partners,Services
   ],
   editor: lexicalEditor({
     features: () => {
@@ -198,6 +211,32 @@ export default buildConfig({
     seoPlugin({
       generateTitle,
       generateURL,
+    }),
+    formBuilderPlugin({
+      fields: {
+        payment: false,
+      },
+      formOverrides: {
+        fields: ({ defaultFields }) => {
+          return defaultFields.map((field) => {
+            if ('name' in field && field.name === 'confirmationMessage') {
+              return {
+                ...field,
+                editor: lexicalEditor({
+                  features: ({ rootFeatures }) => {
+                    return [
+                      ...rootFeatures,
+                      FixedToolbarFeature(),
+                      HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    ]
+                  },
+                }),
+              }
+            }
+            return field
+          })
+        },
+      },
     }),
   ],
 })

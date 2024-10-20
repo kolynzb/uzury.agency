@@ -5,6 +5,7 @@ export const Services: CollectionConfig = {
   slug: COLLECTION_SLUG_SERVICE,
   admin: {
     useAsTitle: 'title',
+    group: 'Company',
     defaultColumns: ['title', 'slug'],
   },
   fields: [

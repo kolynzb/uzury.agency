@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Code } from './code.client'
+import { Code } from './component.client'
 
 export type CodeBlockProps = {
   code: string

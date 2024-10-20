@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { COLLECTION_SLUG_BLOG_CATEGORY, COLLECTION_SLUG_CLIENT } from '@/constants/slugs';
+import { COLLECTION_SLUG_CLIENT, COLLECTION_SLUG_TESTIMONIAL } from '@/constants/slugs';
 import { slugField } from '@/payload/fields/slug';
 
 export const Testimonials: CollectionConfig = {
@@ -52,5 +52,5 @@ export const Testimonials: CollectionConfig = {
           },
           ...slugField(),
     ],
-    slug: COLLECTION_SLUG_BLOG_CATEGORY,
+    slug: COLLECTION_SLUG_TESTIMONIAL,
 };

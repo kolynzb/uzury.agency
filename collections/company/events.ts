@@ -6,6 +6,7 @@ const Event: CollectionConfig = {
   slug: COLLECTION_SLUG_EVENT,
   admin: {
     useAsTitle: 'title',
+    group: 'Company',
     defaultColumns: ['title', 'date', 'location'],
   },
   fields: [

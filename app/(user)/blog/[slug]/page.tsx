@@ -1,67 +1,59 @@
-"use client";
+/* eslint-disable @next/next/no-img-element */
 
 import Layouts from "@/layouts";
 import Link from "next/link";
 import Image from "next/image";
 import BlogSideBar from "../_components/blog-sidebar";
-import {formatSanityDate} from "@/utils/datetime";
-import PostReadTime from "@/components/post-read-time";
-import {slugify} from "@/utils";
-import {RichTextComponents} from "@/components/rich-text";
-import { PortableText, toPlainText } from "@portabletext/react";
-import { PortableTextBlock } from "sanity";
-import { notFound } from "next/navigation";
-import { getCategories, getPost, getPosts } from "@/sanity/lib/api";
-import React, { useEffect, useState } from "react";
-import { IPostCategory, IPost } from "@/interfaces/sanity.interface";
+import { formatSanityDate } from "@/utils/datetime";
+import { generateMeta } from "@/payload/utils/generate-metadata";
+import { Metadata } from "next";
+import { getPayloadHMR } from "@payloadcms/next/utilities";
+import { draftMode } from "next/headers";
+import React, { cache } from 'react'
+import configPromise from '@payload-config'
+import { PayloadRedirects } from "@/payload/components/payload-redirects";
+import RichText from "@/payload/components/rich-text";
+import { Media , Post, User } from "@/payload-types";
+import { slugify } from "@/utils";
+
 
 type Props = {
   params: { slug: string };
 };
 
-const Publication = ({ params }: Props) => {
-  const [post, setPost] = useState<IPost>();
-  const [allPosts, setAllPosts] = useState<IPost[]>();
-  const [allCategories, setAllCategories] = useState<IPostCategory[]>();
+export async function generateStaticParams() {
+  const payload = await getPayloadHMR({ config: configPromise })
+  const posts = await payload.find({
+    collection: 'posts',
+    draft: false,
+    limit: 1000,
+    overrideAccess: false,
+  })
 
-  useEffect(() => {
-    getPost(params.slug)
-        .then((postResult) => {
-          setPost(postResult);
-          console.log("body",postResult.body)
-        })
-        .catch((error) => {
-          //TODO: Handle error if getPost fails
+  return posts.docs?.map(({ slug }) => slug)
+}
 
-          if (error.status === 404) {
-            notFound();
-          }
-        });
 
-    getPosts()
-        .then((allPostsResult) => {
-          setAllPosts(allPostsResult);
-        })
-        .catch((error) => {
-          // Handle error if getPosts fails
-        });
+const Publication = async ({ params: { slug = '' } }: Props) => {
+  const url = '/posts/' + slug
+  const post = await queryPostBySlug({ slug })
 
-    getCategories()
-        .then((categoriesResult) => {
-          setAllCategories(categoriesResult);
-        })
-        .catch((error) => {
-          // Handle error if getCategories fails
-        });
-  }, [params.slug]);
+  if (!post) return <PayloadRedirects url={url} />
+
+  const { categories, featuredImage, meta: { image: metaImage } = {}, populatedAuthors, publishedAt, title } = post
 
   return (
     <Layouts>
+      {/* Allows redirects for valid pages too */}
+      <PayloadRedirects disableNotFound url={url} />
       {/* banner */}
       <div className="mil-banner-sm-2 mil-deep-bg">
+      {/* {metaImage && typeof metaImage !== 'string' && (
+          <Media fill imgClassName="mil-background-image" resource={metaImage} />
+        )} */}
         <Image
-          src={post?.mainImage!}
-          alt={post?.title!}
+          src={(featuredImage as Media).url!}
+          alt={(featuredImage as Media).alt!}
           className="mil-background-image"
           height={667}
           width={1000}
@@ -76,56 +68,73 @@ const Publication = ({ params }: Props) => {
           <div className="row justify-content-between">
             <div className="col-lg-8 col-xl-8 mil-mb-120">
               <span className="mil-suptitle mil-accent mil-mb-30">
-{post?.categories[0].title}              </span>
+              {categories?.map((category, index) => {
+              if (typeof category === 'object' && category !== null) {
+                const { title: categoryTitle } = category
+
+                const titleToUse = categoryTitle || 'Untitled category'
+
+                const isLast = index === categories.length - 1
+
+                return (
+                  <React.Fragment key={index}>
+                    {titleToUse}
+                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
+                  </React.Fragment>
+                )
+              }
+              return null
+            })}    
+              </span>
               <h3 className="mil-up-font mil-mb-30">
-                {post?.title}
+                {title}
               </h3>
               <ul className="mil-dot-list mil-post-info mil-text-sm mil-mb-60">
                 <li className="mil-post-author">
                   <Image
-                      src={post?.author.image!}
-                      alt={post?.author.name!}
-                      height={50}
-                      width={50}
-                      priority={true}
+                    src={((post.authors?.[0] as User).avatar as Media).url!}
+                    alt={((post.authors?.[0] as User).avatar as Media).alt!}
+                    height={50}
+                    width={50}
+                    priority={true}
                   />
-                  <span>post.author.name</span>
+                  <span>{(post.authors?.[0] as User).name}</span>
                 </li>
 
-                <li>{formatSanityDate(post?._createdAt!)}</li>
-                <li><PostReadTime body={post?.body!}/></li>
+                <li>{formatSanityDate(post?.createdAt) ?? 'Unknown Date'}</li>
+                <li>{post?.readTime ?? 'Unknown'} minutes</li>
               </ul>
-              <div className="mil-divider mil-mb-60"/>
+              <div className="mil-divider mil-mb-60" />
               <article className="post-details-content">
-                {post?.body && (
-                    <>
-                      <RichTextComponent content={post?.body}/>
-                    </>
-                )}
+                <RichText
+                  className="lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[1fr]"
+                  content={post.content}
+                  enableGutter={false}
+                />
               </article>
               <ul className="mil-tags mil-mb-60">
                 <li className="mil-h6">Tags:&nbsp;&nbsp; </li>
-                {post?.tags?.map((tag, index) => (
-                    <li key={index}><Link href="/tag/[slug]" as={`/tag/${slugify(tag)}`}>
-                      {tag}
-                    </Link></li>
+                {post?.tags?.map(({tag}, index) => (
+                  <li key={index}><Link href="/tag/[slug]" as={`/tag/${slugify(tag)}`}>
+                    {tag}
+                  </Link></li>
                 ))}
               </ul>
-              <div className="mil-divider mil-mb-60"/>
+              <div className="mil-divider mil-mb-60" />
               <h5 className="mil-mb-30">Was this article helpful?</h5>
               <a
-                  href="#."
-                  className="mil-button mil-border mil-button-sm mil-gray-border mil-mb-15"
+                href="#."
+                className="mil-button mil-border mil-button-sm mil-gray-border mil-mb-15"
               >
                 <span>Yes, it was fine!</span>
               </a>
               <a
-                  href="#."
-                  className="mil-button mil-border mil-button-sm mil-gray-border mil-mb-60"
+                href="#."
+                className="mil-button mil-border mil-button-sm mil-gray-border mil-mb-60"
               >
                 <span>No, or there was something off</span>
               </a>
-              <div className="mil-divider mil-mb-60"/>
+              <div className="mil-divider mil-mb-60" />
               <h3 className="mil-mb-60">
                 Comments - <span className="mil-accent">02</span>
               </h3>
@@ -133,15 +142,15 @@ const Publication = ({ params }: Props) => {
                 <li className="mil-comment">
                   <div className="mil-comment-top-panel">
                     <div className="mil-left">
-                      <img src="img/faces/1.jpg" alt="user avatar"/>
+                      <img src="img/faces/1.jpg" alt="user avatar" />
                       <div>
                         <h5>Ponnappa Priya</h5>
                         <p className="mil-text-sm">September 23, 2020</p>
                       </div>
                     </div>
                     <a
-                        href="#reply"
-                        className="mil-button mil-border mil-button-xs mil-gray-border mil-mb-15"
+                      href="#reply"
+                      className="mil-button mil-border mil-button-xs mil-gray-border mil-mb-15"
                     >
                       <span>Reply</span>
                     </a>
@@ -156,15 +165,15 @@ const Publication = ({ params }: Props) => {
                     <li className="mil-comment">
                       <div className="mil-comment-top-panel">
                         <div className="mil-left">
-                          <img src="img/faces/2.jpg" alt="user avatar"/>
+                          <img src="img/faces/2.jpg" alt="user avatar" />
                           <div>
                             <h5>Tamzyn French</h5>
                             <p className="mil-text-sm">September 23, 2020</p>
                           </div>
                         </div>
                         <a
-                            href="#reply"
-                            className="mil-button mil-border mil-button-xs mil-gray-border mil-mb-15"
+                          href="#reply"
+                          className="mil-button mil-border mil-button-xs mil-gray-border mil-mb-15"
                         >
                           <span>Reply</span>
                         </a>
@@ -180,15 +189,15 @@ const Publication = ({ params }: Props) => {
                 <li className="mil-comment">
                   <div className="mil-comment-top-panel">
                     <div className="mil-left">
-                      <img src="img/faces/3.jpg" alt="user avatar"/>
+                      <img src="img/faces/3.jpg" alt="user avatar" />
                       <div>
                         <h5>Paul Freeman</h5>
                         <p className="mil-text-sm">September 23, 2020</p>
                       </div>
                     </div>
                     <a
-                        href="#reply"
-                        className="mil-button mil-border mil-button-xs mil-gray-border mil-mb-15"
+                      href="#reply"
+                      className="mil-button mil-border mil-button-xs mil-gray-border mil-mb-15"
                     >
                       <span>Reply</span>
                     </a>
@@ -205,7 +214,7 @@ const Publication = ({ params }: Props) => {
                   </p>
                 </li>
               </ul>
-              <div className="mil-divider mil-mb-60" id="reply"/>
+              <div className="mil-divider mil-mb-60" id="reply" />
               <h3 className="mil-mb-60">Leave a Reply</h3>
               <form>
                 <div className="row">
@@ -215,7 +224,7 @@ const Publication = ({ params }: Props) => {
                         <span>Name</span>
                         <span className="mil-accent">Required</span>
                       </label>
-                      <input type="text" placeholder="Enter Your Name Here"/>
+                      <input type="text" placeholder="Enter Your Name Here" />
                     </div>
                   </div>
                   <div className="col-lg-6">
@@ -224,7 +233,7 @@ const Publication = ({ params }: Props) => {
                         <span>Email Adress</span>
                         <span className="mil-accent">Required</span>
                       </label>
-                      <input type="email" placeholder="Your Email"/>
+                      <input type="email" placeholder="Your Email" />
                     </div>
                   </div>
                   <div className="col-lg-12">
@@ -234,9 +243,9 @@ const Publication = ({ params }: Props) => {
                         <span className="mil-accent">Required</span>
                       </label>
                       <textarea
-                          placeholder="Your Message"
-                          className="mil-shortened"
-                          defaultValue={""}
+                        placeholder="Your Message"
+                        className="mil-shortened"
+                        defaultValue={""}
                       />
                     </div>
                   </div>
@@ -246,16 +255,16 @@ const Publication = ({ params }: Props) => {
                         <span>Website</span>
                         <span className="mil-dark-soft">Optional</span>
                       </label>
-                      <input type="text" placeholder="mydomain.com"/>
+                      <input type="text" placeholder="mydomain.com" />
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="mil-checbox-frame mil-dark-input mil-mb-60">
                       <input
-                          className="mil-checkbox"
-                          id="checkbox-1"
-                          type="checkbox"
-                          defaultValue="value"
+                        className="mil-checkbox"
+                        id="checkbox-1"
+                        type="checkbox"
+                        defaultValue="value"
                       />
                       <label htmlFor="checkbox-1" className="mil-text-sm">
                         Save my name, email, and website in this browser for the
@@ -269,7 +278,7 @@ const Publication = ({ params }: Props) => {
                 </div>
               </form>
             </div>
-            <BlogSideBar/>
+            <BlogSideBar />
           </div>
         </div>
       </section>
@@ -278,10 +287,49 @@ const Publication = ({ params }: Props) => {
 };
 export default Publication;
 
-type RichTextComponentProps = {
-  content: PortableTextBlock[];
-};
+const queryPostBySlug = cache(async ({ slug }: { slug: string }): Promise<Post | null> => {
+  const { isEnabled: draft } = await draftMode()
 
-const RichTextComponent = ({ content }: RichTextComponentProps) => {
-  return <PortableText value={content} components={RichTextComponents} />;
-};
+  const payload = await getPayloadHMR({ config: configPromise })
+
+  const result = await payload.find({
+    collection: 'posts',
+    draft,
+    limit: 1,
+    overrideAccess: true,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+
+  return result.docs?.[0] || null
+})
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = (await queryPostBySlug({ slug: params.slug }))!;
+  return generateMeta({ doc: post })
+  // return {
+  //   title: `${post.title}`,
+  //   description: `${post.excerpt}`,
+  //   keywords: [...post.tags],
+  //   openGraph: {
+  //     title: `${post.title}`,
+  //     description: `${post.excerpt}`,
+  //     type: "article",
+  //     locale: "en_US",
+  //     publishedTime: new Date(post._updatedAt).toISOString(),
+  //     authors: [post.author.name],
+  //     images: [{ url: post.mainImage }],
+  //   },
+  //   twitter: {
+  //     card: "summary_large_image",
+  //     title: post.title,
+  //     description: post.excerpt,
+  //     images: [post.mainImage],
+  //     creator: "@Kolynz_b",
+  //   },
+  // };
+}
+

@@ -5,6 +5,7 @@ const Faqs: CollectionConfig = {
   slug: COLLECTION_SLUG_FAQ,
   admin: {
     useAsTitle: 'question',
+    group: 'Company',
     defaultColumns: ['question', 'category', 'isFeatured'],
   },
   fields: [

@@ -1,12 +1,11 @@
-import { Button, type ButtonProps } from '@repo/ui/button'
 import cn from 'classnames'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Post } from '../payload-types'
+import type { Post } from '@/payload-types'
 
 type CMSLinkType = {
-    appearance?: 'inline' | ButtonProps['variant']
+    // appearance?: 'inline' | ButtonProps['variant']
     children?: React.ReactNode
     className?: string
     label?: string
@@ -16,7 +15,7 @@ type CMSLinkType = {
         value: Post | string
         // value: Page | Post | string
     }
-    size?: ButtonProps['size']
+    // size?: ButtonProps['size']
     type?: 'custom' | 'reference'
     url?: string
 }
@@ -56,11 +55,11 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     }
 
     return (
-        <Button asChild className={className} size={size} variant={appearance}>
+        <button  className={className}>
             <Link className={cn(className)} href={href || url} {...newTabProps}>
                 {label && label}
                 {children && children}
             </Link>
-        </Button>
+        </button>
     )
 }

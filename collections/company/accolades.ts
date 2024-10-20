@@ -6,6 +6,7 @@ const Accolades: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date'],
+    group: 'Company',
   },
   fields: [
     {

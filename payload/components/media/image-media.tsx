@@ -6,9 +6,9 @@ import cn from 'classnames'
 import NextImage from 'next/image'
 import React from 'react'
 
-import type { Props as MediaProps } from './types.js'
+import type { Props as MediaProps } from './types'
 
-import cssVariables from '../../css-variables'
+import cssVariables from '@/payload/css-variables'
 
 const { breakpoints } = cssVariables
 

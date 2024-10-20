@@ -2,7 +2,7 @@ import { COLLECTION_SLUG_CLIENT, COLLECTION_SLUG_MEDIA } from "@/constants/slugs
 import { slugField } from "@/payload/fields/slug";
 import { CollectionConfig } from "payload";
 
-export const Client: CollectionConfig = {
+export const Clients: CollectionConfig = {
     slug: COLLECTION_SLUG_CLIENT,
     admin: {
         useAsTitle: 'name',

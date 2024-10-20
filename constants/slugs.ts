@@ -17,3 +17,4 @@ export const COLLECTION_SLUG_CASE_STUDY_CATEGORY =
   export const COLLECTION_SLUG_FAQ = 'faqs' as const;
   export const COLLECTION_SLUG_PARTNER = 'partners' as const;
 export const COLLECTION_SLUG_TEAM_MEMBER = 'team-members' as const;
+export const COLLECTION_SLUG_TESTIMONIAL = 'testimonials' as const;
