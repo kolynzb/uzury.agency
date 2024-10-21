@@ -7,6 +7,9 @@ import GoogleAnalyticsScript from "@/components/tools/google-analytics-script";
 import { siteConfig, seoKeywords } from "@/config/site";
 import type {Metadata} from "next";
 import DraftPreviewBtn from "@/components/draft-preview-btn";
+import { AdminBar } from '@/payload/components/admin-bar';
+import { LivePreviewListener } from '@/payload/components/live-preview-listener';
+import { draftMode } from 'next/headers'
 
 export const metadata: Metadata = {
     title: {
@@ -68,11 +71,13 @@ export const metadata: Metadata = {
     manifest: "/favicon/site.webmanifest",
   };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+  const { isEnabled } = await draftMode()
+
     return (
         <html lang="en">
                <head>
@@ -81,6 +86,13 @@ export default function RootLayout({
             <body>
                 <main className="">
                     {children}
+                    <AdminBar
+            adminBarProps={{
+              preview: isEnabled,
+            }}
+          />
+          <LivePreviewListener />
+
                     <DraftPreviewBtn/>
                 </main>
         {/*<Analytics />*/}

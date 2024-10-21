@@ -34,7 +34,7 @@ export const AdminBar: React.FC<{
   const collection = collectionLabels?.[segments?.[1]] ? segments?.[1] : 'pages'
   const router = useRouter()
 
-  const onAuthChange = React.useCallback((user) => {
+  const onAuthChange = React.useCallback((user:any) => {
     setShow(user?.id)
   }, [])
 

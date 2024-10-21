@@ -3,6 +3,7 @@ import { getPayloadHMR } from "@payloadcms/next/utilities";
 import Image from "next/image";
 import configPromise from '@payload-config'
 import { COLLECTION_SLUG_BLOG_CATEGORY, COLLECTION_SLUG_POST } from "@/constants/slugs";
+import { Media } from "@/payload-types";
 
 const BlogSideBar = async () => {
     const payload = await getPayloadHMR({ config: configPromise })
@@ -28,7 +29,7 @@ const BlogSideBar = async () => {
     return (
         <aside className="col-lg-4 col-xl-3 mil-mb-120">
             <div className="mil-mb-60">
-                <h5 className="mil-list-title mil-mb-30">About Uuzry</h5>
+                <h5 className="mil-list-title mil-mb-30">About Uzury</h5>
                 <p className="mil-mb-30">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                     diam nonummy nibh euismod tincidunt.

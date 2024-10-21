@@ -3,15 +3,14 @@ import {IPost} from "@/interfaces/sanity.interface";
 import Image from "next/image";
 import {formatSanityDate} from "@/utils/datetime";
 import PostReadTime from "@/components/post-read-time";
-import type { Post } from '@/payload-types'
-import { Media } from "@/payload/components/media";
+import type { Media, Post } from '@/payload-types'
 import { Fragment } from "react";
 
 interface BlogCardProps {
     details:Post
 }
 const BlogCard = ({details}:BlogCardProps)=> {
-    const { slug, categories, meta, title } = details || {}
+    const { slug, categories,featuredImage, meta, title } = details || {}
     const { description, image: metaImage } = meta || {}
     const hasCategories = categories && Array.isArray(categories) && categories.length > 0
     const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
@@ -19,14 +18,14 @@ const BlogCard = ({details}:BlogCardProps)=> {
     return (
         <Link href={`/blog/${details.slug}`} className="mil-card mil-mb-60">
             <figure className="mil-cover-frame">
-                <Media resource={metaImage} size="360px"  />
-                {/* <Image
-                    src={details.mainImage}
-                    alt={details.title}
+                {/* <Media resource={featuredImage} size="360px"  /> */}
+                <Image
+                   src={(featuredImage as Media).url!}
+                  alt={(featuredImage as Media).alt!}
                     height={667}
                     width={1000}
                     priority={true}
-                /> */}
+                />
             </figure>
             <div className="mil-description">
                 <div className="mil-card-title">

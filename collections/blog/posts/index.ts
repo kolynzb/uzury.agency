@@ -34,7 +34,7 @@ import {
 export const Posts: CollectionConfig = {
   slug: COLLECTION_SLUG_POST,
   admin: {
-    // TODO: ADD IMAGE ON LIST ITEM
+    // TODO: ADD IMAGE ON LIST ITEM and add preview action button
     defaultColumns: ["featuredImage", "title","_status", "slug","updatedAt"],
     useAsTitle: "title",
     group: "Blog",
@@ -98,6 +98,9 @@ export const Posts: CollectionConfig = {
     {
       name: "tags",
       type: "array",
+      admin:{
+        description: "Add relevant tags for this post to help with filtering and organization.",
+      },
       fields: [
         {
           name: "tag",
@@ -111,6 +114,7 @@ export const Posts: CollectionConfig = {
       type: "relationship",
       admin: {
         position: "sidebar",
+        description: "Select the author of this post.",
       },
       hasMany: true,
       relationTo: COLLECTION_SLUG_USER,
@@ -247,9 +251,9 @@ export const Posts: CollectionConfig = {
               hasGenerateFn: true,
             }),
             MetaImageField({
-              relationTo: "media",
+              relationTo: COLLECTION_SLUG_MEDIA,
             }),
-
+// TODO: ADD SEO Keywords here
             MetaDescriptionField({}),
             PreviewField({
               // if the `generateUrl` function is configured

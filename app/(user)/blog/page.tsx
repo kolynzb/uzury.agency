@@ -39,53 +39,54 @@ const Blog = async () => {
             <div className="col-lg-8 col-xl-8 mil-mb-120">
               {/*ADD PAGINATION*/}
               {posts.docs?.map((result, index) => {
-            if (typeof result === 'object' && result !== null) {
-              
-              return(<BlogCard key={index} details={result}/>)}
-            })}
+                if (typeof result === 'object' && result !== null) {
+
+                  return (<BlogCard key={index} details={result} />)
+                }
+              })}
 
 
               <div className="mil-divider mil-mb-60" />
 
               <PageRange
-          collection={COLLECTION_SLUG_POST}
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
+                collection={COLLECTION_SLUG_POST}
+                currentPage={posts.page}
+                limit={12}
+                totalDocs={posts.totalDocs}
+              />
               {/*Pagination*/}
-              {posts.totalPages > 1 && posts.page && (     
-              <div className="mil-pagination mil-hidden-arrows">
-                <div className="mil-slider-nav">
-                  <div className="mil-slider-btn-prev mil-blog-prev">
-                    <i className="fas fa-arrow-left" />
-                    <span className="mil-h6">Prev</span>
+              {posts.totalPages > 1 && posts.page && (
+                <div className="mil-pagination mil-hidden-arrows">
+                  <div className="mil-slider-nav">
+                    <div className="mil-slider-btn-prev mil-blog-prev">
+                      <i className="fas fa-arrow-left" />
+                      <span className="mil-h6">Prev</span>
+                    </div>
+                  </div>
+                  <ul className="mil-pagination-numbers">
+                    <li className="mil-active">
+                      <a href="#.">1</a>
+                    </li>
+                    <li>
+                      <a href="#.">2</a>
+                    </li>
+                    <li>
+                      <a href="#.">3</a>
+                    </li>
+                  </ul>
+                  <div className="mil-slider-nav">
+                    <div className="mil-slider-btn-next mil-blog-next">
+                      <span className="mil-h6">Next</span>
+                      <i className="fas fa-arrow-right" />
+                    </div>
                   </div>
                 </div>
-                <ul className="mil-pagination-numbers">
-                  <li className="mil-active">
-                    <a href="#.">1</a>
-                  </li>
-                  <li>
-                    <a href="#.">2</a>
-                  </li>
-                  <li>
-                    <a href="#.">3</a>
-                  </li>
-                </ul>
-                <div className="mil-slider-nav">
-                  <div className="mil-slider-btn-next mil-blog-next">
-                    <span className="mil-h6">Next</span>
-                    <i className="fas fa-arrow-right" />
-                  </div>
-                </div>
-              </div>
 
-)}
-            {/* pagination */}
+              )}
+              {/* pagination */}
             </div>
             {/*Left Posts: END*/}
-            <BlogSidebar/>
+            <BlogSidebar />
           </div>
         </div>
       </section>

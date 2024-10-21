@@ -16,7 +16,7 @@ const Prices = () => {
         <div className="container">
           <h3 className="mil-text-center mil-mb-120">
             Get <span className="mil-accent">2 months</span> free by choosing
-            Uuzry annual plan
+            Uzury annual plan
           </h3>
           <div className="row">
             <div className="col-xl-4">
@@ -118,7 +118,7 @@ const Prices = () => {
             </div>
             <p className="mil-light mil-mb-30">Leadership Team</p>
             <h2 className="mil-light mil-mb-30">
-              <span className="mil-accent">Uuzry</span> in The Future
+              <span className="mil-accent">Uzury</span> in The Future
             </h2>
             <p className="mil-light-soft mil-mb-60">
               It is a long established fact that a reader will be distracted by

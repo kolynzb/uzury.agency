@@ -13,30 +13,35 @@ import React, { cache } from 'react'
 import configPromise from '@payload-config'
 import { PayloadRedirects } from "@/payload/components/payload-redirects";
 import RichText from "@/payload/components/rich-text";
-import { Media , Post, User } from "@/payload-types";
+import { Media, Post, User } from "@/payload-types";
 import { slugify } from "@/utils";
+import { COLLECTION_SLUG_POST } from "@/constants/slugs";
 
 
 type Props = {
   params: { slug: string };
 };
 
-export async function generateStaticParams() {
-  const payload = await getPayloadHMR({ config: configPromise })
-  const posts = await payload.find({
-    collection: 'posts',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-  })
+// export async function generateStaticParams() {
+//   const payload = await getPayloadHMR({ config: configPromise })
+//   const posts = await payload.find({
+//     collection: COLLECTION_SLUG_POST,
+//     draft: false,
+//     limit: 1000,
+//     where: {
+//       featured: { equals: true },
+//   },
+//     overrideAccess: false,
+//   })
 
-  return posts.docs?.map(({ slug }) => slug)
-}
+//   return posts.docs?.map(({ slug }) => slug)
+// }
 
 
 const Publication = async ({ params: { slug = '' } }: Props) => {
-  const url = '/posts/' + slug
+  const url = '/blog/' + slug
   const post = await queryPostBySlug({ slug })
+
 
   if (!post) return <PayloadRedirects url={url} />
 
@@ -48,7 +53,7 @@ const Publication = async ({ params: { slug = '' } }: Props) => {
       <PayloadRedirects disableNotFound url={url} />
       {/* banner */}
       <div className="mil-banner-sm-2 mil-deep-bg">
-      {/* {metaImage && typeof metaImage !== 'string' && (
+        {/* {metaImage && typeof metaImage !== 'string' && (
           <Media fill imgClassName="mil-background-image" resource={metaImage} />
         )} */}
         <Image
@@ -68,23 +73,23 @@ const Publication = async ({ params: { slug = '' } }: Props) => {
           <div className="row justify-content-between">
             <div className="col-lg-8 col-xl-8 mil-mb-120">
               <span className="mil-suptitle mil-accent mil-mb-30">
-              {categories?.map((category, index) => {
-              if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
+                {categories?.map((category, index) => {
+                  if (typeof category === 'object' && category !== null) {
+                    const { title: categoryTitle } = category
 
-                const titleToUse = categoryTitle || 'Untitled category'
+                    const titleToUse = categoryTitle || 'Untitled category'
 
-                const isLast = index === categories.length - 1
+                    const isLast = index === categories.length - 1
 
-                return (
-                  <React.Fragment key={index}>
-                    {titleToUse}
-                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                  </React.Fragment>
-                )
-              }
-              return null
-            })}    
+                    return (
+                      <React.Fragment key={index}>
+                        {titleToUse}
+                        {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
+                      </React.Fragment>
+                    )
+                  }
+                  return null
+                })}
               </span>
               <h3 className="mil-up-font mil-mb-30">
                 {title}
@@ -114,7 +119,7 @@ const Publication = async ({ params: { slug = '' } }: Props) => {
               </article>
               <ul className="mil-tags mil-mb-60">
                 <li className="mil-h6">Tags:&nbsp;&nbsp; </li>
-                {post?.tags?.map(({tag}, index) => (
+                {post?.tags?.map(({ tag }, index) => (
                   <li key={index}><Link href="/tag/[slug]" as={`/tag/${slugify(tag)}`}>
                     {tag}
                   </Link></li>
@@ -290,10 +295,11 @@ export default Publication;
 const queryPostBySlug = cache(async ({ slug }: { slug: string }): Promise<Post | null> => {
   const { isEnabled: draft } = await draftMode()
 
+  console.log("is draft mode enables",draft)
   const payload = await getPayloadHMR({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'posts',
+    collection: COLLECTION_SLUG_POST,
     draft,
     limit: 1,
     overrideAccess: true,
