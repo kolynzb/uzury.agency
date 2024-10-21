@@ -54,7 +54,7 @@ const TeamSingle = () => {
                   <p className="mil-text-sm">2017-1019</p>
                 </li>
                 <li>
-                  <h5 className="mil-mb-5">ITSulu Group</h5>
+                  <h5 className="mil-mb-5">Uuzry Group</h5>
                   <p className="mil-text-sm">2019-Today</p>
                 </li>
               </ul>
@@ -142,7 +142,7 @@ const TeamSingle = () => {
                   <img src="img/icons/md/7.svg" alt="icon" />
                 </div>
                 <h4 className="mil-mb-30">
-                  ITSulu allowed me to grow and{" "}
+                  Uuzry allowed me to grow and{" "}
                   <span className="mil-accent">reach goals</span> that I never
                   imagined.
                 </h4>

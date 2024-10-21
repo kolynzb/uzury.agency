@@ -38,7 +38,7 @@ const E404 = () => {
       {/* 404 end */}
       <div className="mil-addition-bottom">
         <div className="container-fluid">
-          <p className="mil-text-sm mil-light-soft">© ITSulu 2023.</p>
+          <p className="mil-text-sm mil-light-soft">© Uuzry 2023.</p>
           <p className="mil-text-sm mil-light-soft">All Rights Reserved.</p>
         </div>
       </div>

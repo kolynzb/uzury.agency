@@ -24,7 +24,7 @@ const Team = () => {
                   <div className="mil-team-circle" />
                 </div>
                 <h4 className="mil-mb-10">Andrew Kazantzis</h4>
-                <p>CEO ITSulu</p>
+                <p>CEO Uuzry</p>
               </Link>
             </div>
             <div className="col-sm-6 col-lg-4">
@@ -57,7 +57,7 @@ const Team = () => {
                   <div className="mil-team-circle" />
                 </div>
                 <h4 className="mil-mb-10">Andrew Kazantzis</h4>
-                <p>CEO ITSulu</p>
+                <p>CEO Uuzry</p>
               </Link>
             </div>
             <div className="col-sm-6 col-lg-4">

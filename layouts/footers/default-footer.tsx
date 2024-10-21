@@ -40,7 +40,7 @@ const DefaultFooter = () => {
               <div className="row">
                 <div className="col-lg-7 mil-mb-30">
                   <h3 className="mil-light mil-up-font mil-mb-30">
-                    Join The <span className="mil-accent">ITSulu</span> <br />
+                    Join The <span className="mil-accent">Uuzry</span> <br />
                     Experience
                   </h3>
                   <p className="mil-light-soft">
@@ -103,7 +103,7 @@ const DefaultFooter = () => {
       </div>
       <div className="mil-footer-bottom">
         <div className="container">
-          <p className="mil-text-sm mil-light">© ITSulu 2023.</p>
+          <p className="mil-text-sm mil-light">© Uuzry 2023.</p>
           <p className="mil-text-sm mil-light">All Rights Reserved.</p>
         </div>
       </div>

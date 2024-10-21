@@ -7,7 +7,7 @@ const Footer2 = () => {
           <div className="row align-items-center mil-p-120-60">
             <div className="col-xl-6 mil-mb-60">
               <h3 className="mil-light mil-mb-15">
-                Join The <span className="mil-accent">ITSulu</span> Experience
+                Join The <span className="mil-accent">Uuzry</span> Experience
               </h3>
               <p className="mil-light-soft">
                 Duis autem vel eum iriure dolor in hendrerit in vulputate.
@@ -122,7 +122,7 @@ const Footer2 = () => {
       </div>
       <div className="mil-footer-bottom">
         <div className="container">
-          <p className="mil-text-sm mil-light">© ITSulu 2023.</p>
+          <p className="mil-text-sm mil-light">© Uuzry 2023.</p>
           <p className="mil-text-sm mil-light">All Rights Reserved.</p>
         </div>
       </div>

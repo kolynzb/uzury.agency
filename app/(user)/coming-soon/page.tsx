@@ -37,7 +37,7 @@ const ComingSoon = () => {
       {/* coming soon */}
       <div className="mil-dark-bg mil-add-page">
         <img
-          src="https://bslthemes.com/html/itsulu/img/photo/20.jpg"
+          src="https://bslthemes.com/html/Uuzry/img/photo/20.jpg"
           alt="background"
           className="mil-background-image"
         />
