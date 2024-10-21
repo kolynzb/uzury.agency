@@ -40,6 +40,7 @@ import Partners from './collections/company/partners'
 import { Services } from './collections/company/services'
 import { Testimonials } from './collections/portfolio/testimonials'
 import  {Clients}  from '@/collections/portfolio/clients'
+import { BlogSeries } from './collections/blog/series'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -121,7 +122,7 @@ export default buildConfig({
   collections: [
       Pages,Users, Media,
     // Blog
-    Posts,PostCategories,
+    Posts,PostCategories,BlogSeries,
     // Portfolio
     CaseStudies,CaseStudyCategories,Testimonials,Clients,
     // Company

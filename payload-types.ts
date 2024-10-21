@@ -16,6 +16,7 @@ export interface Config {
     media: Media;
     posts: Post;
     'blog-categories': BlogCategory;
+    'blog-series': BlogSerie;
     'case-studies': CaseStudy;
     'case-study-categories': CaseStudyCategory;
     testimonials: Testimonial;
@@ -266,6 +267,7 @@ export interface Post {
   };
   relatedPosts?: (string | Post)[] | null;
   categories?: (string | BlogCategory)[] | null;
+  serie?: (string | null) | BlogSerie;
   meta?: {
     title?: string | null;
     image?: (string | null) | Media;
@@ -303,6 +305,26 @@ export interface BlogCategory {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-series".
+ */
+export interface BlogSerie {
+  id: string;
+  title: string;
+  categories?: (string | BlogCategory)[] | null;
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  featuredImage: string | Media;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -764,6 +786,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blog-categories';
         value: string | BlogCategory;
+      } | null)
+    | ({
+        relationTo: 'blog-series';
+        value: string | BlogSerie;
       } | null)
     | ({
         relationTo: 'case-studies';

@@ -1,5 +1,6 @@
 export const COLLECTION_SLUG_POST = 'posts' as const;
 export const COLLECTION_SLUG_BLOG_CATEGORY = 'blog-categories' as const;
+export const COLLECTION_SLUG_BLOG_SERIE = 'blog-series' as const;
 export const COLLECTION_SLUG_CASE_STUDY = 'case-studies' as const;
 export const COLLECTION_SLUG_CASE_STUDY_CATEGORY =
   'case-study-categories' as const;

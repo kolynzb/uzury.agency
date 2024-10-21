@@ -21,6 +21,7 @@ import {
   COLLECTION_SLUG_BLOG_CATEGORY,
   COLLECTION_SLUG_MEDIA,
   COLLECTION_SLUG_POST,
+  COLLECTION_SLUG_BLOG_SERIE,
 } from "@/constants/slugs";
 import { generatePreviewPath } from "@/payload/utils/generate-preview-path";
 import {
@@ -234,6 +235,14 @@ export const Posts: CollectionConfig = {
               },
               hasMany: true,
               relationTo: COLLECTION_SLUG_BLOG_CATEGORY,
+            },
+            {
+              name: "serie",
+              type: "relationship",
+              admin: {
+                position: "sidebar",
+              },
+              relationTo: COLLECTION_SLUG_BLOG_SERIE,
             },
           ],
           label: "Meta",
